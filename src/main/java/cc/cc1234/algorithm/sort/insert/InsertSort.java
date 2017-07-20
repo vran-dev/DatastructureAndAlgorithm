@@ -1,4 +1,7 @@
-package cc.cc1234.algorithm.sort;
+package cc.cc1234.algorithm.sort.insert;
+
+import cc.cc1234.algorithm.sort.BaseSort;
+import cc.cc1234.algorithm.sort.SortTest;
 
 /**
  * 插入排序

@@ -1,5 +1,7 @@
-package cc.cc1234.algorithm.sort;
+package cc.cc1234.algorithm.sort.select;
 
+import cc.cc1234.algorithm.sort.BaseSort;
+import cc.cc1234.algorithm.sort.SortTest;
 
 /**
  * 选择排序
