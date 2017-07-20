@@ -4,7 +4,6 @@ package cc.cc1234.algorithm.sort;
 /**
  * 选择排序
  * @author vran1
- *
  */
 public class SelectSort<E extends Comparable<? super E>> extends BaseSort<E>{
 
