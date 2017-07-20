@@ -13,7 +13,20 @@ public class MaxHeap<E extends Comparable<? super E>> {
 	public MaxHeap(int capacity) {
 		data=new Object[capacity];
 	}
-
+	
+	public MaxHeap(E[] data) {
+		this.data = data;
+		size = data.length;
+		heapify(data);
+	}
+	
+	private void heapify(E[] data) {
+		int p = data.length%2==0?data.length/2-1:data.length/2;
+		for( int i = p ; i>=0 ;i--) {
+			shiftDown(i);
+		}
+	}
+	
 	public void insert(E e) {
 		if( e==null || size==data.length ) {
 			throw new IllegalStateException();

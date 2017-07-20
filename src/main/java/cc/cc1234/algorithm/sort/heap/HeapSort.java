@@ -14,10 +14,7 @@ public class HeapSort<E extends Comparable<? super E>> extends BaseSort<E> {
 	private MaxHeap<E> heap;
 	@Override
 	public void sort(E[] data) {
-		heap = new MaxHeap<>(data.length);
-		for(E e:data) {
-			heap.insert(e);
-		}
+		heap = new MaxHeap<>(data);
 		for(int i=data.length-1;i>=0;i--) {
 			data[i] = heap.pop();
 		}
