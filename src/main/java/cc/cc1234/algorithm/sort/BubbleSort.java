@@ -3,8 +3,6 @@ package cc.cc1234.algorithm.sort;
 /**
  *  冒泡排序
  * @author vran1
- *
- * @param <E>
  */
 public class BubbleSort<E extends Comparable<? super E>> extends BaseSort<E>{
 
