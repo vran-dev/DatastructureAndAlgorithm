@@ -1,6 +1,9 @@
 package cc.cc1234.algorithm.sort;
 
-
+/**
+ * 排序抽象
+ * @author vran1 
+ */
 public abstract class BaseSort<E extends Comparable<? super E>> {
 
 	public abstract void sort(E[] data);
