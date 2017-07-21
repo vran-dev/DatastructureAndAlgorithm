@@ -12,12 +12,13 @@
 
 # Search algorithm
 1. [Binary search](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/search)
+2. [Sequence search](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/search)
 
 # DataStructure
 
 ## List
-1. [arraylist](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/list)
-2. [linkedlist](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/list)
+1. [Arraylist](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/list)
+2. [Linkedlist](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/list)
 
 ## Stack
 ## Queue
