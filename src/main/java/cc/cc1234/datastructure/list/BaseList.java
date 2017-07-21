@@ -1,7 +1,7 @@
 package cc.cc1234.datastructure.list;
 
 public abstract class BaseList<E extends Comparable<? super E>> {
-	private int size;
+	protected int size;
 	
 	public abstract void add(E e);
 	
