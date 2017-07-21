@@ -35,3 +35,5 @@
 
 
 ## Graph
+1. [DenseGraph  稠密图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph)
+2. [SparseGraph  稀疏图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph)
