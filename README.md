@@ -34,6 +34,7 @@
 
 ## Tree
 1. [BinaryTree  二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
+1. [AVLTree  平衡二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
 
 
 ## Graph
