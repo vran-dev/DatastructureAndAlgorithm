@@ -91,6 +91,11 @@ public class ArrayQueue<E> implements Dequeue<E> {
 	}
 
 	@Override
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
+	@Override
 	public String toString() {
 		return "ArrayQueue [size=" + size + ", data=" + Arrays.toString(data) + ", head=" + head + ", tail=" + tail
 				+ "]";
@@ -157,4 +162,5 @@ public class ArrayQueue<E> implements Dequeue<E> {
 		System.out.println(queue.addFirst(1));
 		System.out.println(queue);
 	}
+
 }
