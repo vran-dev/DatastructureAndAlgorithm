@@ -9,7 +9,7 @@ import java.util.Queue;
  * (底层实现可以由数组和链表两种实现方式)
  * @author vran
  */
-public class ArrayStack<E> {
+public class ArrayStack<E> implements IStack<E>{
 	private Object[] data;
 	private int size;
 	
@@ -21,18 +21,21 @@ public class ArrayStack<E> {
 	 * 将元素压入栈底
 	 * @Date 2017年7月21日
 	 */
-	public void push(E e) {
+	@Override
+	public boolean push(E e) {
 		if(size == data.length) {
-			throw new IllegalStateException("The capacity is full");
+			return false;
 		}
 		data[size] = e;
 		size++;
+		return true;
 	}
 	
 	/**
 	 * 弹出栈顶元素
 	 * @Date 2017年7月21日
 	 */
+	@Override
 	public E pop() {
 		if(size == 0) {
 			return null;
@@ -42,7 +45,7 @@ public class ArrayStack<E> {
 		return e;
 	}
 	
-	
+	@Override
 	public int size() {
 		return size;
 	}
