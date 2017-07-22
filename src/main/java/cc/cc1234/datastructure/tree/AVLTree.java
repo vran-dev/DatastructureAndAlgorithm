@@ -79,14 +79,6 @@ public class AVLTree<E extends Comparable<? super E>> {
 		}
 	}
 	
-	/*
-	 * 删除元素，保持平衡规则
-	 */
-	public E remove(E e) {
-		// TODO
-		return null;
-	}
-	
 	public boolean contains(E e) {
 		TreeNode<E> node = root;
 		while(node!=null) {
@@ -189,7 +181,7 @@ public class AVLTree<E extends Comparable<? super E>> {
 		tree.add(4);
 		tree.add(10);
 		tree.add(3);
-		tree.add(6);
+		tree.add(2);
 		System.out.println(tree.root);
 		System.out.println(tree.root.leftChild);
 		System.out.println(tree.root.rightChild);
