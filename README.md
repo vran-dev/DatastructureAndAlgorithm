@@ -15,7 +15,7 @@
 1. [Binary search  二分查找](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/search)
 2. [Sequence search  顺序查找](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/search)
 
-## Tree alorithm
+## Tree algorithm
 1. [CalcTreeLevel  计算树的层高（递归实现和队列实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 2. [ReverseTree  翻转二叉树（递归实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 
