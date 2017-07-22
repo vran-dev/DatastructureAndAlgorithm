@@ -103,16 +103,16 @@ public class BinaryTree<E extends Comparable<? super E>> extends BaseTree<E> {
 	private void removeNode(TreeNode<E> parent,TreeNode<E> node, boolean isleft) {
 		if( node.left == null && node.right == null) { // 左右子节点均为空
 			node = null;
-			setNode(parent, null, isleft);
+			updateRelation(parent, null, isleft);
 		}else if(node.left == null) { // 左节点为空
-			setNode(parent, node.right, isleft); 
+			updateRelation(parent, node.right, isleft); 
 		}else if(node.right == null){ // 右节点为空
-			setNode(parent, node.left, isleft);
+			updateRelation(parent, node.left, isleft);
 		}else { // 左右节点均不为空
 			TreeNode<E> successor = findSuccessor(node.right);
 			successor.left = node.left;
 			successor.right = node.right;
-			setNode(parent, successor, isleft);
+			updateRelation(parent, successor, isleft);
 		}
 	}
 
@@ -130,7 +130,7 @@ public class BinaryTree<E extends Comparable<? super E>> extends BaseTree<E> {
 		return node;
 	}
 
-	private void setNode(TreeNode<E> parent,TreeNode<E> node, boolean isleft) {
+	private void updateRelation(TreeNode<E> parent,TreeNode<E> node, boolean isleft) {
 		if(parent == null) {
 			root = node;
 		}else {
