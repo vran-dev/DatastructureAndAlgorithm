@@ -1,7 +1,8 @@
 > some algorithm and datastructure 
 
-# Sort algorithm
+# Algorithm
 
+## Sort algorithm
 1. [Bubble sort  冒泡排序](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/sort/bubble)
 2. [Select sort  选择排序](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/sort/select)
 3. [Insert sort  插入排序](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/sort/insert)
@@ -10,9 +11,12 @@
 6. [Shell sort  希尔排序](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/sort/shell)
 7. [Heap sort  堆排序](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/sort/heap)
 
-# Search algorithm
+## Search algorithm
 1. [Binary search  二分查找](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/search)
 2. [Sequence search  顺序查找](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/search)
+
+## Tree alorithm
+1. [CalcTreeLevel  计算树的层高（递归实现和队列实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 
 # DataStructure
 
