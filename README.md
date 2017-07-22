@@ -26,7 +26,7 @@
 
 ## Queue
 1. [ArrayQueue 数组双端循环队列](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/queue)
-
+2. [LinkedQueue 链表双端队列](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/queue)
 
 ## Heap
 1. [MaxHeap 最大堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
