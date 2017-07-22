@@ -106,6 +106,11 @@ public class LinkedQueue<E> implements Dequeue<E>{
 	}
 	
 	@Override
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
+	@Override
 	public String toString() {
 		return "LinkedQueue [head=" + head + ", tail=" + tail + ", size=" + size + "]";
 	}
@@ -122,4 +127,6 @@ public class LinkedQueue<E> implements Dequeue<E>{
 		System.out.println(q);
 //		q.add(2);
 	}
+
+	
 }
