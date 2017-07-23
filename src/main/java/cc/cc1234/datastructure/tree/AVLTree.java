@@ -79,13 +79,13 @@ public class AVLTree<E extends Comparable<? super E>> {
 	}
 	
 	private TreeNode<E> rotateWithLeftChild(TreeNode<E> node){
-		TreeNode<E> n = node.leftChild;
-		node.leftChild = n.rightChild;
-		n.rightChild = node;
+		TreeNode<E> l = node.leftChild;
+		node.leftChild = l.rightChild;
+		l.rightChild = node;
 		
-		node.height=Integer.max(height(node.leftChild), n.height)+1;
-		n.height=Integer.max(height(n.leftChild), height(n.rightChild))+1;
-		return n;
+		node.height=Integer.max(height(node.leftChild), height(node.rightChild))+1;
+		l.height=Integer.max(height(l.leftChild), node.height)+1;
+		return l;
 	}
 	
 	private TreeNode<E> doubleWithLeftChlid(TreeNode<E> node){
