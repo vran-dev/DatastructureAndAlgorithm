@@ -83,8 +83,8 @@ public class AVLTree<E extends Comparable<? super E>> {
 		node.leftChild = n.rightChild;
 		n.rightChild = node;
 		
-		n.height=Integer.max(height(n.leftChild), height(n.rightChild))+1;
 		node.height=Integer.max(height(node.leftChild), n.height)+1;
+		n.height=Integer.max(height(n.leftChild), height(n.rightChild))+1;
 		return n;
 	}
 	
