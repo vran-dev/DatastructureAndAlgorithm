@@ -15,70 +15,116 @@ public class AVLTree<E extends Comparable<? super E>> {
 	private int size;
 	private static class TreeNode<E>{
 		E v;
-		int bf; // 平衡因子
+		int height; // 高度
 		TreeNode<E> leftChild;
 		TreeNode<E> rightChild;
-		TreeNode<E> parent;
+//		TreeNode<E> parent;
+
 		public TreeNode(E v) {
 			this.v = v;
 		}
+
 		@Override
 		public String toString() {
-			return " [v=" + v + ", bf=" + bf + ", parent=" + parent + "]";
+			return "TreeNode [v=" + v ;
 		}
-		
+
 	}
+
+
 	/**
 	 * 添加元素，保持平衡规则 
 	 */
 	public boolean add(E e) {
-		if(root == null) {
-			root = new TreeNode<E>(e);
-			size++;
-			return true;
+		root = doAdd(e, root);
+		size++;
+		return true;
+	}
+
+	private TreeNode<E> doAdd(E e , TreeNode<E> node) {
+		if(node == null) {
+			return new TreeNode<E>(e);
+		}
+		int c = e.compareTo(node.v);
+		if(c>1) {
+			node.rightChild = doAdd(e, node.rightChild);
+		}else if(c<1) {
+			node.leftChild = doAdd(e, node.leftChild);
 		}else {
-			TreeNode<E> node = root;
-			while(true) {
-				int c = e.compareTo(node.v);
-				if(c == -1 ) {
-					if(node.leftChild!=null) {
-						node = node.leftChild;
-					}else {
-						node.leftChild = new TreeNode<E>(e);
-						node.leftChild.parent = node;
-						updateBF(node); // 插入节点后需要维护平衡因子
-						if(node.bf==1 && node.parent!=null && node.parent.bf==1) { // 连续两层节点的平衡因子为1，说明该子树已经破坏了平衡
-							balance(node.parent);
-						}
-						size++;
-						return true;
-					}
-				}else {
-					if(node.rightChild!=null) {
-						node = node.rightChild;
-					}else {
-						node.rightChild = new TreeNode<E>(e);
-						node.rightChild.parent = node;
-						updateBF(node);
-						if(node.bf==1 && node.parent!=null && node.parent.bf==1) {
-							balance(node.parent);
-						}
-						size++;
-						return true;
-					}
-				}
+			// 相等的情况不做任何处理
+		}
+
+		return balance(node);
+	}
+
+	/*
+	 * 平衡
+	 */
+	private TreeNode<E> balance(TreeNode<E> node) {
+		if(height(node.leftChild) - height(node.rightChild) > 1) { // 左子树  > 右子树
+			if(height(node.leftChild.leftChild) > height(node.leftChild.rightChild)) { // LL
+				
+			}else { // LR
+				
+			}
+		}else if(height(node.rightChild) - height(node.leftChild) > 1) { // 右子树 > 左子树
+			if(height(node.rightChild.leftChild) > height(node.rightChild.rightChild)) { // RR
+				
+			}else { // LR
+				
 			}
 		}
+		node.height = Integer.max(height(node.leftChild), height(node.rightChild))+1;
+		return node;
 	}
 	
-	private void updateBF(TreeNode<E> node) {
-		if(node.bf == 1) {
-			node.bf = 0;
-		}else {
-			node.bf = 1;
+	private TreeNode<E> rotateWithLeftChild(TreeNode<E> node){
+		TreeNode<E> n = node.leftChild;
+		node.leftChild = n.rightChild;
+		n.rightChild = node;
+		
+		n.height=Integer.max(height(n.leftChild), height(n.rightChild))+1;
+		node.height=Integer.max(height(node.leftChild), n.height)+1;
+		return n;
+	}
+	
+	private TreeNode<E> doubleWithLeftChlid(TreeNode<E> node){
+		
+		return null;
+	}
+	
+	private int height(TreeNode<E> node) {
+		return node == null?-1:node.height;
+	}
+
+	/**
+	 * @param p 以p为根节点进行 右旋
+	 * @return 当前旋转过后的子树根节点
+	 */
+	private TreeNode<E> rightRoate(TreeNode<E> p) {
+		if(p != null) {
+			TreeNode<E> lc = p.leftChild;
+			p.leftChild = lc.rightChild;
+			lc.rightChild = p;
+			return lc;
 		}
+		return null;
 	}
-	
+
+	/**
+	 * @param p 以p为根节点左旋
+	 * @return 当前旋转过后的子树根节点
+	 */
+	private TreeNode<E> leftRoate(TreeNode<E> p) {
+		if(p != null) {
+			TreeNode<E> rc = p.rightChild;
+			p.rightChild = rc.leftChild;
+			rc.leftChild = p;
+			return  rc;
+		}
+		return null;
+	}
+
 	public boolean contains(E e) {
 		TreeNode<E> node = root;
 		while(node!=null) {
@@ -93,99 +139,29 @@ public class AVLTree<E extends Comparable<? super E>> {
 		}
 		return false;
 	}
-	
-	/*
-	 * 平衡
-	 */
-	private void balance(TreeNode<E> node) {
-		System.out.println("------- 开始自平衡旋转 -------");
-		if(node.leftChild !=null && node.leftChild.leftChild!=null) { // 左左类型：直接右旋
-			rrRoate(node);
-		}else if(node.rightChild!=null && node.rightChild.rightChild!=null) { // 右右类型：直接左旋
-			llRoate(node);
-		}else if(node.leftChild!=null && node.leftChild.rightChild!=null) { // 左右类型：先左旋再右旋
-			lrRoate(node);
-		}else if(node.rightChild!=null && node.rightChild.leftChild!=null) { // 右左类型：先右旋再左旋
-			rlRoate(node);
-		}
-	}
-	
-	private void rlRoate(TreeNode<E> node) {
-		TreeNode<E> rc = node.rightChild;
-		TreeNode<E> rl = rc.leftChild;
-		
-		rl.parent = node;
-		node.rightChild = rl;
-		rl.rightChild = rc;
-		rc.parent = rl;
-		
-		rc.bf = 0;
-		rl.bf = 1;
-		llRoate(node);
+
+	private int calcLevel(TreeNode<E> node) {
+		if(node == null) { return 0; }
+		return Integer.max(calcLevel(node.leftChild), calcLevel(node.rightChild))+1;
 	}
 
-	private void lrRoate(TreeNode<E> node) {
-		TreeNode<E> lc = node.leftChild;
-		TreeNode<E> lr = lc.rightChild;
-		
-		lr.leftChild = lc;
-		lr.parent = node;
-		node.leftChild = lr;
-		lc.parent = lr;
-		
-		lr.bf = 1;
-		lc.bf = 0;
-		rrRoate(node);
-	}
-
-	private void llRoate(TreeNode<E> node) {
-		TreeNode<E> rc = node.rightChild;
-		rc.parent = node.parent;
-		if(node.parent!=null) {
-			node.parent.rightChild = rc;
-		}else {
-			root = rc;
-		}
-		node.parent = rc;
-		rc.leftChild = node;
-		node.rightChild = null;
-		
-		node.bf = 0;
-		rc.bf = 0;
-	}
-	
-	private void rrRoate(TreeNode<E> node) {
-		TreeNode<E> lc = node.leftChild;
-		lc.parent = node.parent;
-		if(node.parent!=null) {
-			node.parent.leftChild = lc;
-		}else {
-			root = lc;
-		}
-		node.parent = lc;
-		lc.rightChild = node;
-		node.leftChild = null;
-		
-		node.bf = 0;
-		lc.bf = 0;
-	}
-	
 	public int size() {
 		return size;
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		AVLTree<Integer> tree = new AVLTree<>();
-		tree.add(7);
-		tree.add(4);
-		tree.add(10);
-		tree.add(3);
-		tree.add(2);
-		System.out.println(tree.root);
-		System.out.println(tree.root.leftChild);
-		System.out.println(tree.root.rightChild);
-		System.out.println(tree.root.leftChild.leftChild);
-		System.out.println(tree.root.leftChild.rightChild);
+		TreeNode<Integer> root =new TreeNode<>(7);
+		root.leftChild = new TreeNode<Integer>(6);
+		root.leftChild.leftChild  = new TreeNode<Integer>(5);
+		root.leftChild.leftChild.leftChild  = new TreeNode<Integer>(4);
+		root.leftChild.leftChild.leftChild.leftChild = new TreeNode<Integer>(3);
+		root.leftChild = tree.rightRoate(root.leftChild);
+
+		System.out.println(root);
+		System.out.println(root.leftChild);
+		System.out.println(root.leftChild.leftChild);
+		System.out.println(root.leftChild.rightChild);
 	}
 }
