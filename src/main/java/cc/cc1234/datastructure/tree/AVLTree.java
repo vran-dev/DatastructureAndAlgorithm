@@ -2,12 +2,8 @@ package cc.cc1234.datastructure.tree;
 
 
 /**
- * AVL树本质上还是一棵二叉树，特点
- * 1 本身是一棵二叉树
- * 2 每个节点的左右子树的高度之差绝对值不能大于1
- * 
- * @author vran1
- *
+ * @author vran
+ * @date 2017-07-24 09:13:33
  */
 public class AVLTree<E extends Comparable<? super E>> {
 	// 树的根节点
@@ -18,7 +14,6 @@ public class AVLTree<E extends Comparable<? super E>> {
 		int height; // 高度
 		TreeNode<E> leftChild;
 		TreeNode<E> rightChild;
-//		TreeNode<E> parent;
 
 		public TreeNode(E v) {
 			this.v = v;
@@ -50,35 +45,45 @@ public class AVLTree<E extends Comparable<? super E>> {
 			node.rightChild = doAdd(e, node.rightChild);
 		}else if(c<1) {
 			node.leftChild = doAdd(e, node.leftChild);
-		}else {
-			// 相等的情况不做任何处理
+		}else { 
+			// 相等的情况不做任何处理 
 		}
 
 		return balance(node);
 	}
 
 	/*
-	 * 平衡
+	 * 平衡操作
 	 */
 	private TreeNode<E> balance(TreeNode<E> node) {
 		if(height(node.leftChild) - height(node.rightChild) > 1) { // 左子树  > 右子树
 			if(height(node.leftChild.leftChild) > height(node.leftChild.rightChild)) { // LL
-				
+				rightRoate(node);
 			}else { // LR
-				
+				doubleRoateWithLeftChild(node);
 			}
 		}else if(height(node.rightChild) - height(node.leftChild) > 1) { // 右子树 > 左子树
-			if(height(node.rightChild.leftChild) > height(node.rightChild.rightChild)) { // RR
-				
-			}else { // LR
-				
+			if(height(node.rightChild.rightChild) > height(node.rightChild.leftChild)) { // RR
+				rightRoate(node);
+			}else { // RL
+				doubleRoateWithRightChild(node);
 			}
 		}
 		node.height = Integer.max(height(node.leftChild), height(node.rightChild))+1;
 		return node;
 	}
 	
-	private TreeNode<E> rotateWithLeftChild(TreeNode<E> node){
+	/**
+	 * 单次右旋
+	 * @param node 带旋转子树的根节点
+	 * @return 旋转后新树的根节点
+	 * @Date 2017年7月24日
+	 */
+	/**
+	 * @param node
+	 * @return
+	 */
+	private TreeNode<E> rightRoate(TreeNode<E> node){
 		TreeNode<E> l = node.leftChild;
 		node.leftChild = l.rightChild;
 		l.rightChild = node;
@@ -88,41 +93,47 @@ public class AVLTree<E extends Comparable<? super E>> {
 		return l;
 	}
 	
-	private TreeNode<E> doubleWithLeftChlid(TreeNode<E> node){
+	/**
+	 * 单次左旋
+	 * @param node 带旋转子树的根节点
+	 * @return 旋转后新树的根节点
+	 */
+	private TreeNode<E> leftRoate(TreeNode<E> node){
+		TreeNode<E> r = node.rightChild;
+		node.rightChild = r.leftChild;
+		r.leftChild = node;
 		
-		return null;
+		node.height = Integer.max(height(node.rightChild), height(node.leftChild)) + 1;
+		r.height = Integer.max(height(r.rightChild), node.height)+1;
+		return r;
+	}
+	
+	/**
+	 * 右旋 -> 左旋 RL
+	 * @param node
+	 * @return
+	 */
+	private TreeNode<E> doubleRoateWithRightChild(TreeNode<E> node){
+		// 右旋
+		rightRoate(node.leftChild);
+		// 左旋
+		return leftRoate(node);
+	}
+	
+	/**
+	 * 左旋 -> 右旋 LR
+	 * @param node
+	 * @return
+	 */
+	private TreeNode<E> doubleRoateWithLeftChild(TreeNode<E> node){
+		// 左旋
+		leftRoate(node.leftChild);
+		// 右旋
+		return rightRoate(node);
 	}
 	
 	private int height(TreeNode<E> node) {
 		return node == null?-1:node.height;
-	}
-
-	/**
-	 * @param p 以p为根节点进行 右旋
-	 * @return 当前旋转过后的子树根节点
-	 */
-	private TreeNode<E> rightRoate(TreeNode<E> p) {
-		if(p != null) {
-			TreeNode<E> lc = p.leftChild;
-			p.leftChild = lc.rightChild;
-			lc.rightChild = p;
-			return lc;
-		}
-		return null;
-	}
-
-	/**
-	 * @param p 以p为根节点左旋
-	 * @return 当前旋转过后的子树根节点
-	 */
-	private TreeNode<E> leftRoate(TreeNode<E> p) {
-		if(p != null) {
-			TreeNode<E> rc = p.rightChild;
-			p.rightChild = rc.leftChild;
-			rc.leftChild = p;
-			return  rc;
-		}
-		return null;
 	}
 
 	public boolean contains(E e) {
@@ -140,15 +151,9 @@ public class AVLTree<E extends Comparable<? super E>> {
 		return false;
 	}
 
-	private int calcLevel(TreeNode<E> node) {
-		if(node == null) { return 0; }
-		return Integer.max(calcLevel(node.leftChild), calcLevel(node.rightChild))+1;
-	}
-
 	public int size() {
 		return size;
 	}
-
 
 	public static void main(String[] args) {
 		AVLTree<Integer> tree = new AVLTree<>();
