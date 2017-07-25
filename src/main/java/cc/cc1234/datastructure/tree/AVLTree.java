@@ -51,7 +51,8 @@ public class AVLTree<E extends Comparable<? super E>> {
 
 		return balance(node);
 	}
-
+	
+	
 	/*
 	 * 平衡操作
 	 */
