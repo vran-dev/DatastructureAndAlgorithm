@@ -19,6 +19,8 @@
 1. [CalcTreeLevel  计算树的层高（递归实现和队列实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 2. [ReverseTree  翻转二叉树（递归实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 
+## Num algorithm
+1. [TwoSum 判断一个有序数组中是否存在两个数的和等于输入的值](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 
 # DataStructure
 
