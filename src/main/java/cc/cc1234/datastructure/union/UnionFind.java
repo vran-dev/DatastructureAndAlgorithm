@@ -33,8 +33,8 @@ public class UnionFind {
 		return id[i];
 	}
 	
-	public boolean union(int prepare, int old) {
-		int pID = find(prepare);
+	public boolean union(int v, int old) {
+		int pID = find(v);
 		int oID = find(old);
 		if(pID == oID) { // 本身是连接的
 			return false;
