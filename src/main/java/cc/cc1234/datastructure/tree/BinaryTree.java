@@ -2,7 +2,8 @@ package cc.cc1234.datastructure.tree;
 
 
 /**
- * 二叉树
+ * 二叉树：
+ * 任意一个节点node，它的左子节点值小于它，右子节点大于它
  * @author vran
  */
 public class BinaryTree<E extends Comparable<? super E>> extends BaseTree<E> {

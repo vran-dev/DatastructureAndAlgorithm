@@ -2,6 +2,8 @@ package cc.cc1234.datastructure.tree;
 
 
 /**
+ * 自平衡树 AVLTree:
+ * 任意节点的左右子树的树高差不大于1
  * @author vran
  * @date 2017-07-24 09:13:33
  */
