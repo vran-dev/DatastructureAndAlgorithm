@@ -37,7 +37,7 @@ public class UnionFind {
 		int pID = find(v);
 		int oID = find(old);
 		if(pID == oID) { // 本身是连接的
-			return false;
+			return true;
 		}
 		for(int i=0 ; i<count; i++) {
 			if(find(i) == pID) {
