@@ -1,6 +1,8 @@
-package cc.cc1234.datastructure.queue;
+package cc.cc1234.datastructure.queue.imp;
 
 import java.util.Arrays;
+
+import cc.cc1234.datastructure.queue.Dequeue;
 
 /**
  * 基于数组实现的双端队列

@@ -1,5 +1,6 @@
-package cc.cc1234.datastructure.list;
+package cc.cc1234.datastructure.list.imp;
 
+import cc.cc1234.datastructure.list.BaseList;
 
 /**
  * 链表(逻辑连续)

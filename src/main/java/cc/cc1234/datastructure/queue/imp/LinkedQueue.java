@@ -1,5 +1,6 @@
-package cc.cc1234.datastructure.queue;
+package cc.cc1234.datastructure.queue.imp;
 
+import cc.cc1234.datastructure.queue.Dequeue;
 
 /**
  * 
