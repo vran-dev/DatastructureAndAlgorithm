@@ -8,7 +8,6 @@ import java.util.Set;
  * @author vran
  * @date 2017-07-27 14:16:32
  */
-//TODO 待优化
 public class Trie {
 	private Node root;
 
@@ -16,7 +15,7 @@ public class Trie {
 		Character v;
 		Set<Node> childs;
 		boolean red; // 节点为红色,代表该节点的单词存在
-		
+
 		public Node() {
 			this(null);
 		}
@@ -42,30 +41,16 @@ public class Trie {
 	public void insert(String word) {
 		char[] charArray = word.toCharArray();
 		Node n = root;
-		for(int i=0;i<charArray.length;i++) {
+		for(int i=0;i<charArray.length;i++) {														
 			char c = charArray[i];
-			Node t = null;
-			for(Node node:n.childs) {
-				if(node.v.equals(c)) {
-					t = node;
-					break;
-				}
+			Node t = findNodeFromChilds(n, c);
+			if(t == null) {
+				t = new Node(c);
+				n.childs.add(t);
 			}
-
-			if(t!=null) {
-				n=t;
-				if(i==charArray.length-1) {
-					n.red=true;
-				}
-				continue;
-			}
-			Node newNode = new Node(c);
-			if(i==charArray.length-1) {
-				newNode.red=true;
-			}
-			n.childs.add(newNode);
-			n = newNode;
+			n = t;
 		}
+		n.red = true;
 	}
 
 	/*
@@ -75,28 +60,13 @@ public class Trie {
 		char[] charArray = word.toCharArray();
 		Node n = root;
 		for(int i=0;i<charArray.length;i++) {
-			if(n.childs.size()==0) {
-				return false;
-			}
-
-			Node t = null;
-			for(Node node:n.childs) {
-				if(node.v.equals(charArray[i])) {
-					t = node;
-					break;
-				}
-			}
-			
+			Node t = findNodeFromChilds(n, charArray[i]);
 			if(t == null) {
 				return false;
 			}
-			
-			if(i==charArray.length-1 && t.red) {
-				return true;
-			}
 			n=t;
 		}
-		return false;
+		return n.red;
 	}
 
 	/*
@@ -106,20 +76,20 @@ public class Trie {
 		char[] charArray = prefix.toCharArray();
 		Node n = root;
 		for(int i=0;i<charArray.length;i++) {
-			Node t = null;
-			for(Node node:n.childs) {
-				if(node.v.equals(charArray[i])) {
-					t=node;
-					break;
-				}
-			}
-			
+			Node t = findNodeFromChilds(n, charArray[i]);
 			if(t == null) {
 				return false;
 			}
 			n = t;
 		}
 		return true;
+	}
+
+	private Node findNodeFromChilds(Node n,char c) {
+		if(n == null || n.childs.size()==0) {
+			return null;
+		}
+		return n.childs.stream().filter(node->node.v.equals(c)).findFirst().orElse(null);
 	}
 
 	@Override
@@ -130,7 +100,9 @@ public class Trie {
 	public static void main(String[] args) {
 		Trie trie = new Trie();
 		trie.insert("hello");
+		System.out.println(trie);
 		trie.insert("helle");
+		System.out.println(trie);
 		trie.insert("he");
 		System.out.println(trie);
 		System.out.println(trie.find("hello"));
