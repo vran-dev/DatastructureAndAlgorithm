@@ -45,7 +45,8 @@
 
 ## Tree(树)
 1. [BinaryTree  二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
-1. [AVLTree  平衡二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
+2. [AVLTree  平衡二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
+3. [Trie  前缀查找树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree/trie)
 
 
 ## Graph(图)
