@@ -1,6 +1,8 @@
-package cc.cc1234.datastructure.list;
+package cc.cc1234.datastructure.list.imp;
 
 import java.util.Arrays;
+
+import cc.cc1234.datastructure.list.BaseList;
 
 /**
  * 顺序表（物理连续）

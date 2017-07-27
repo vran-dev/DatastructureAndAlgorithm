@@ -1,7 +1,7 @@
 package cc.cc1234.algorithm.tree;
 
-import cc.cc1234.datastructure.queue.LinkedQueue;
 import cc.cc1234.datastructure.queue.Queue;
+import cc.cc1234.datastructure.queue.imp.LinkedQueue;
 
 /**
  * 计算树的层高(基于队列来实现)
