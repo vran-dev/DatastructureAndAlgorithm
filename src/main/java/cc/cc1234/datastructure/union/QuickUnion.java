@@ -74,7 +74,7 @@ public class QuickUnion {
 		QuickUnion union = new QuickUnion(10);
 		System.out.println("union.find(1)="+union.find(1));
 		System.out.println("union.isConnected(1,1)="+union.isConnected(1, 1));
-		System.out.println("union.isConnected(1,0)="+union.isConnected(1, 1));
+		System.out.println("union.isConnected(1,0)="+union.isConnected(1, 0));
 		System.out.println("union.union(1,2)="+union.union(1, 2));
 		System.out.println(union);
 		System.out.println("union.union(1,3)="+union.union(1, 3));
