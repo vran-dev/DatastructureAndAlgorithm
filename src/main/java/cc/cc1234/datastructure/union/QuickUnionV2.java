@@ -3,48 +3,70 @@ package cc.cc1234.datastructure.union;
 import java.util.Arrays;
 
 /**
- * 并查集优化版（路径压缩）：
+ * 并查集优化版（Rank优化）：
  * 上一个版本的并查集的实现在连接new和old时，是找到两者的根节点，
  * 进行判断通过后将new的根节点链接到old节点下面，这样可能会导致old节点
  * 下面的元素膨胀
  * 优化思路:连接new和old节点时，判断两个节点的深度（从根开始），将深度低的节点链接到
  * 深度高的节点下。
  * @author vran1
- *
  */
 public class QuickUnionV2 {
 	private int[] id;
-	private int[] size;
+	private int[] level;
 	private int count;
 	
 	public QuickUnionV2(int count) {
 		this.count = count;
 		id = new int[count];
-		size = new int[count];
+		level = new int[count];
 		for(int i = 0; i < count; i++) {
 			id[i] = i;
-			size[i] = 1;
+			level[i] = 1;
 		}
 	}
 	
 	/**
-	 * 
 	 * @Date 2017年7月26日
 	 */
 	public int find(int i) {
-		return 0;
+		if(i<0 || i>id.length) {
+			throw new IllegalArgumentException();
+		}
+		
+		int pid = id[i];
+		if(pid == i) {
+			return pid;
+		}
+		
+		return find(id[pid]);
 	}
 	
 	public boolean isConnected(int v, int old) {
-		//TODO
-		return false;
+		return find(v) == find(old);
 	}
 	
 	public boolean union(int v, int old) {
-		return false;
+		int vId = find(v);
+		int oId = find(old);
+		if(vId == oId) {
+			return true;
+		}
+		
+		if(level[vId] > level[oId]) {
+			id[oId] = vId;
+		}else if(level[vId] == level[oId]){
+			id[vId] = oId;
+			level[oId]++;
+		}else{
+			id[vId] = oId;
+		}
+		return true;
 	}
 	
-	
+	public int size(int v) {
+		return level[v];
+	}
 	
 	@Override
 	public String toString() {
@@ -52,20 +74,31 @@ public class QuickUnionV2 {
 	}
 
 	public static void main(String[] args) {
-		QuickUnionV2 union = new QuickUnionV2(10);
-		System.out.println("union.find(1)="+union.find(1));
-		System.out.println("union.isConnected(1,1)="+union.isConnected(1, 1));
-		System.out.println("union.isConnected(1,0)="+union.isConnected(1, 1));
-		System.out.println("union.union(1,2)="+union.union(1, 2));
-		System.out.println(union);
-		System.out.println("union.union(1,3)="+union.union(1, 3));
-		System.out.println(union);
+		System.out.println("-------------------");
+		QuickUnionV2 v2 = new QuickUnionV2(6);
+		System.out.println(v2);
+		System.out.println(Arrays.toString(v2.level));
 		
-		union.union(5,6);
-		union.union(5,7);
-		System.out.println(union);
-		System.out.println(union.union(1, 6));
-		System.out.println(union);
+		System.out.println("union(1,2)="+v2.union(1, 2));
+		System.out.println(v2);
+		System.out.println(Arrays.toString(v2.level));
 		
+		System.out.println("union(3,1)="+v2.union(3, 1));
+		System.out.println(v2);
+		System.out.println(Arrays.toString(v2.level));
+		
+		System.out.println("union(4,1)="+v2.union(4, 5));
+		System.out.println(v2);
+		System.out.println(Arrays.toString(v2.level));
+		
+		System.out.println("union(4,1)="+v2.union(4, 2));
+		System.out.println(v2);
+		System.out.println(Arrays.toString(v2.level));
+		
+		System.out.println(v2.isConnected(4, 1));
+		System.out.println(v2.isConnected(3, 1));
+		System.out.println(v2.isConnected(2, 1));
+		System.out.println(v2.isConnected(2, 3));
 	}
+	
 }
