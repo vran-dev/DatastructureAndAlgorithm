@@ -57,4 +57,5 @@
 ## Union(并查集)
 1. [UnionFind  并查集](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/union)
 2. [QuickUnion  并查集优化版](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/union)
-3. [QuickUnionV2  并查集Rank优化版](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/unionV2)
+3. [QuickUnionV2  并查集Rank优化版](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/union)
+4. [QuickUnionV3  并查集路径压缩优化版](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/union)
