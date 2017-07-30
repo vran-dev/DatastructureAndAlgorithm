@@ -87,11 +87,11 @@ public class QuickUnionV2 {
 		System.out.println(v2);
 		System.out.println(Arrays.toString(v2.level));
 		
-		System.out.println("union(4,1)="+v2.union(4, 5));
+		System.out.println("union(4,5)="+v2.union(4, 5));
 		System.out.println(v2);
 		System.out.println(Arrays.toString(v2.level));
 		
-		System.out.println("union(4,1)="+v2.union(4, 2));
+		System.out.println("union(4,2)="+v2.union(4, 2));
 		System.out.println(v2);
 		System.out.println(Arrays.toString(v2.level));
 		
