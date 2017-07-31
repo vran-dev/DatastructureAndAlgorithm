@@ -1,5 +1,10 @@
 package cc.cc1234.datastructure.tree;
 
+/**
+ * 二叉树实现V2(递归版)
+ * @author vran
+ * @date 2017-07-31 16:46:19
+ */
 public class BinaryTreeV2<E extends Comparable<? super E>> extends BaseTree<E>{
 	
 	private Node<E> root;
