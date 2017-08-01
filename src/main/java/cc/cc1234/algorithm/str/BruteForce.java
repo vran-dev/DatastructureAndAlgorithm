@@ -19,6 +19,7 @@ public class BruteForce {
 					return true;
 				}
 			}else {
+				i = i - j + 1;
 				j = 0;
 			}
 		}
@@ -29,6 +30,7 @@ public class BruteForce {
 		System.out.println(contains("abcdefg","bcd"));
 		System.out.println(contains("abcdefg","abc"));
 		System.out.println(contains("abcdefg","efg"));
+		System.out.println(contains("cbcbcad","cbcad"));
 		System.out.println(contains("abc","abc"));
 		System.out.println(contains("abc","abcd"));
 		System.out.println(contains("abc","x"));
