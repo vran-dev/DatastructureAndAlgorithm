@@ -26,7 +26,8 @@
 3. [GetLeatNumers.java 寻找最小的K个数](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 
 ## Str algorithm
-1. [BruteForce 字符串匹配算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/str)
+1. [BruteForce BF字符串匹配算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/str)
+1. [KMPmatch KMP字符串匹配算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/str)
 
 # DataStructure
 
