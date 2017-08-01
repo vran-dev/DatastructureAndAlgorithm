@@ -9,7 +9,18 @@ import java.util.Arrays;
  */
 public class KMPmatch {
 	public static boolean contains(String parent, String child) {
-		
+		int[] next = next(child);
+		char[] c = child.toCharArray();
+		char[] p = parent.toCharArray();
+		for(int i=0,j=0;i<p.length && j<c.length;i++,j++) {
+			if(p[i] == c[j]) {
+				if(j == c.length-1) {
+					return true;
+				}
+			}else {
+				j = next[j];
+			}
+		}
 		
 		return false;
 	}
@@ -39,7 +50,14 @@ public class KMPmatch {
 	}
 	
 	public static void main(String[] args) {
-		String str = "abcdaf";
-		System.out.println(Arrays.toString(next(str)));
+		System.out.println(contains("abcdefg","bcd"));
+		System.out.println(contains("abcdefg","abc"));
+		System.out.println(contains("abcdefg","efg"));
+		System.out.println(contains("cbcbcad","cbcad"));
+		System.out.println(contains("abc","abc"));
+		System.out.println(contains("abc","abcd"));
+		System.out.println(contains("abc","x"));
+	
 	}
+	
 }
