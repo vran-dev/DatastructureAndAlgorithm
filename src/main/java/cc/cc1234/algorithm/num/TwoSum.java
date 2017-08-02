@@ -23,13 +23,4 @@ public class TwoSum {
 		}
 		return false;
 	}
-	
-	public static void main(String[] args) {
-		int[] in = {1,2,3,4,5,6,7,8,9};
-		System.out.println(new TwoSum().find(in, 3));
-		System.out.println(new TwoSum().find(in, 17));
-		System.out.println(new TwoSum().find(in, 12));
-		System.out.println(new TwoSum().find(in, 0));
-		System.out.println(new TwoSum().find(in, 99));
-	}
 }
