@@ -15,11 +15,11 @@ public class NumAdd {
 		int sum = 0;
 		int carry = 0;
 		do {
-			sum = a ^ b;
-			carry = (a&b) << 1;
+			sum = a ^ b; // 只相加不进位
+			carry = (a&b) << 1; // 进位
 			a = sum;
 			b = carry;
-		}while(carry!=0);
+		}while(carry!=0); // 如过还存在进位则继续上面的步骤
 		return sum;
 	}
 }
