@@ -14,6 +14,20 @@ import cc.cc1234.algorithm.sort.quick.QuickSort;
 import cc.cc1234.algorithm.sort.select.SelectSort;
 import cc.cc1234.algorithm.sort.shell.ShellSort;
 
+/**
+ * 排序测试用例：
+ * 
+ * 1 测试以排好序的数组
+ * 2 测试逆序排序的数组
+ * 3 测试空数组
+ * 4 测试单个值的数组
+ * 5 测试奇数个随机数组
+ * 6 测试偶数个随机数组
+ * 7 测试NUll
+ * 
+ * @author vran
+ * @Date 2017-08-03 10:28:43
+ */
 public class SortTest {
 	
 	private BaseSort<Integer> bubble;
@@ -34,7 +48,12 @@ public class SortTest {
 		heap = new HeapSort<>();
 		shell = new ShellSort<>();
 	}
-
+	
+	/**
+	 * 冒泡排序测试
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testBubbleSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
@@ -68,6 +87,11 @@ public class SortTest {
 
 	}
 	
+	/**
+	 * 插入排序测试
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testInsertSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
@@ -100,6 +124,11 @@ public class SortTest {
 		}
 	}
 	
+	/**
+	 * 选择排序测试
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testSelectSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
@@ -131,7 +160,11 @@ public class SortTest {
 			Assert.assertTrue(e instanceof NullPointerException);
 		}
 	}
-	
+	/**
+	 * 堆排序测试
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testHeapSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
@@ -163,7 +196,11 @@ public class SortTest {
 			Assert.assertTrue(e instanceof NullPointerException);
 		}
 	}
-	
+	/**
+	 * 希尔排序测试
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testShellSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
@@ -195,7 +232,11 @@ public class SortTest {
 			Assert.assertTrue(e instanceof NullPointerException);
 		}
 	}
-	
+	/**
+	 * 归并排序测试
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testMergeSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
@@ -227,7 +268,11 @@ public class SortTest {
 			Assert.assertTrue(e instanceof NullPointerException);
 		}
 	}
-	
+	/**
+	 * 快速排序测试（两路快排）
+	 * 
+	 * @Date 2017年8月3日
+	 */
 	@Test
 	public void testQuickSort() {
 		Integer[] match = {1,2,3,4,5,6,7,8,9};
