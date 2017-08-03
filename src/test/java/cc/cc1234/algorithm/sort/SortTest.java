@@ -14,7 +14,7 @@ import cc.cc1234.algorithm.sort.quick.QuickSort;
 import cc.cc1234.algorithm.sort.select.SelectSort;
 import cc.cc1234.algorithm.sort.shell.ShellSort;
 
-public class ISortTest {
+public class SortTest {
 	
 	private BaseSort<Integer> bubble;
 	private BaseSort<Integer> select;
