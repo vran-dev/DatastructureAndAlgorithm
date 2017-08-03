@@ -56,9 +56,4 @@ public class QuickSort<E extends Comparable<? super E>> extends BaseSort<E>{
 		return lt;
 	}
 
-
-	public static void main(String[] args) {
-		SortTest.test(new QuickSort<Integer>());
-	}
-
 }
