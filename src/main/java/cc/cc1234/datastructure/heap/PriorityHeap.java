@@ -101,29 +101,14 @@ public class PriorityHeap<E> {
 			}
 		}
 	} 
+	
+	public int size() {
+		return size;
+	}
 
 	@Override
 	public String toString() {
 		return "PriorityHeap [size=" + size + ", data=" + Arrays.toString(data) + "]";
 	}
 
-	public static void main(String[] args) {
-		PriorityHeap<Integer> heap = new PriorityHeap<>(5);
-		heap.insert(1, 1);
-		heap.insert(2, 2);
-		System.out.println(heap);
-		heap.insert(3, 3);
-		heap.insert(4, 4);
-		System.out.println(heap);
-		heap.insert(5, 5);
-		System.out.println(heap);
-		
-		heap.change(1, 6);
-		heap.change(2, 8);
-		System.out.println(heap.pop());
-		System.out.println(heap.pop());
-		System.out.println(heap.pop());
-		System.out.println(heap.pop());
-		System.out.println(heap.pop());
-	}
 }
