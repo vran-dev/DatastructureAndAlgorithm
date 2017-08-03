@@ -70,21 +70,4 @@ public class QuickUnion {
 		return "QuickUnion [id=" + Arrays.toString(id) + ", count=" + count + "]";
 	}
 
-	public static void main(String[] args) {
-		QuickUnion union = new QuickUnion(10);
-		System.out.println("union.find(1)="+union.find(1));
-		System.out.println("union.isConnected(1,1)="+union.isConnected(1, 1));
-		System.out.println("union.isConnected(1,0)="+union.isConnected(1, 0));
-		System.out.println("union.union(1,2)="+union.union(1, 2));
-		System.out.println(union);
-		System.out.println("union.union(1,3)="+union.union(1, 3));
-		System.out.println(union);
-		
-		union.union(5,6);
-		union.union(5,7);
-		System.out.println(union);
-		System.out.println(union.union(1, 6));
-		System.out.println(union);
-		
-	}
 }

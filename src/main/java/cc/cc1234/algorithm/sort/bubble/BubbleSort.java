@@ -19,8 +19,4 @@ public class BubbleSort<E extends Comparable<? super E>> extends BaseSort<E>{
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		SortTest.test(new BubbleSort<Integer>());
-	}
 }

@@ -1,7 +1,10 @@
-package cc.cc1234.datastructure.graph;
+package cc.cc1234.datastructure.graph.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cc.cc1234.datastructure.graph.Graph;
+import cc.cc1234.datastructure.graph.GraphIterator;
 
 /**
  * 稀疏图
@@ -21,6 +24,7 @@ public class SparseGraph implements Graph{
 	public SparseGraph(int capacity, boolean direct) {
 		this.direct = direct;
 		linked = new ArrayList<>(capacity);
+		vertexs = capacity;
 		for(int i=0; i < capacity ;i++) {
 			linked.add(new ArrayList<Integer>());
 		}

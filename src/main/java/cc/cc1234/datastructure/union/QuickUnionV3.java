@@ -61,7 +61,7 @@ public class QuickUnionV3 {
 		return true;
 	}
 	
-	public int size(int v) {
+	private int size(int v) {
 		return level[v];
 	}
 	
@@ -70,20 +70,4 @@ public class QuickUnionV3 {
 		return "QuickUnion [id=" + Arrays.toString(id) + ", count=" + count + "]";
 	}
 
-	public static void main(String[] args) {
-		System.out.println("-------------------");
-		QuickUnionV3 v2 = new QuickUnionV3(6);
-		System.out.println(v2);
-		System.out.println(Arrays.toString(v2.level));
-		
-		System.out.println("union(1,2)="+v2.union(1, 2));
-		System.out.println("union(3,4)="+v2.union(3, 4));
-		System.out.println("union(1,4)="+v2.union(1, 4));
-		System.out.println(v2);
-		System.out.println("union(0,5)="+v2.union(0, 5));
-		System.out.println(v2);
-		System.out.println(v2.find(1));
-		System.out.println(v2);
-	}
-	
 }

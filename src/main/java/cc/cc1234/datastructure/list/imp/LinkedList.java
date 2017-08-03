@@ -116,7 +116,7 @@ public class LinkedList<E extends Comparable<? super E>> extends BaseList<E> {
 		
 		Node<E> n = head;
 		while(n!=null) {
-			if(n.value.compareTo(e) == 1) {
+			if(n.value.compareTo(e) == 0) {
 				return true;
 			}
 			n = n.next;
@@ -124,8 +124,6 @@ public class LinkedList<E extends Comparable<? super E>> extends BaseList<E> {
 		
 		return false;
 	}
-	
-	
 	
 	@Override
 	public String toString() {
@@ -139,28 +137,5 @@ public class LinkedList<E extends Comparable<? super E>> extends BaseList<E> {
 		builder.append(" size=").append(super.size);
 		return builder.toString();
 	}
-
-	public static void main(String[] args) {
-		BaseList<Integer> list = new LinkedList<>();
-		list.add(1);
-		System.out.println(list);
-		list.remove(0);
-		System.out.println(list);
-		
-		System.out.println("-------------------");
-		list.add(1);
-		list.add(2);
-		System.out.println("remove 1="+list.remove(1));
-		System.out.println(list);
-		list.add(3);
-		System.out.println("remove 0="+list.remove(0));
-		System.out.println(list);
-		list.add(4);
-		list.add(5);
-		list.add(6);
-		System.out.println("remove 2="+list.remove(2));
-		System.out.println(list);
-		
-		
-	}
+	
 }

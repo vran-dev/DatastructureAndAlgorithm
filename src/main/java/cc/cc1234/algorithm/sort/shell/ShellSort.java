@@ -37,9 +37,4 @@ public class ShellSort<E extends Comparable<? super E>> extends BaseSort<E>{
 			  
 	}
 
-	public static void main(String[] args) {
-		ShellSort<Integer> shell = new ShellSort<Integer>();
-		SortTest.test(shell);
-	}
-
 }
