@@ -53,7 +53,7 @@ public class ArrayList<E extends Comparable<? super E>> extends BaseList<E>{
 	@Override
 	public boolean contains(E e) {
 		for(int i=0; i<super.size(); i++) {
-			if(((E)data[i]).compareTo(e) == 1) {
+			if(((E)data[i]).compareTo(e) == 0) {
 				return true;
 			}
 		}
@@ -79,37 +79,6 @@ public class ArrayList<E extends Comparable<? super E>> extends BaseList<E>{
 	@Override
 	public String toString() {
 		return "ArrayList [data=" + Arrays.toString(data) + ", size=" + size + "]";
-	}
-	
-	public static void main(String[] args) {
-		BaseList<Integer> list=new ArrayList<>(3);
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		System.out.println(list);
-		list.add(4);
-		list.add(5);
-		list.add(6);
-		System.out.println(list);
-		
-		for(int i=0;i<list.size();i++) {
-			System.out.print(list.get(i)+" ");
-		}
-		System.out.println("\r\n---------------");
-		for(int i=0;i<list.size();i++) {
-			System.out.print(list.contains(i)+" ");
-		}
-		System.out.println("\r\n---------------");
-		System.out.println(list.remove(0));
-		System.out.println(list);
-		
-		list.add(7);
-		System.out.println(list.remove(list.size()-1));
-		System.out.println(list);
-		
-		System.out.println(list.remove(3));
-		System.out.println(list);
-		
 	}
 	
 }

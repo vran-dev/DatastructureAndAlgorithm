@@ -1,5 +1,6 @@
-package cc.cc1234.datastructure.stack;
+package cc.cc1234.datastructure.stack.imp;
 
+import cc.cc1234.datastructure.stack.IStack;
 
 /**
  * 基于链表的栈实现
@@ -61,16 +62,4 @@ public class LinkedStack<E> implements IStack<E>{
 		return size;
 	}
 	
-	public static void main(String[] args) {
-		IStack<Integer> stack = new LinkedStack<>();
-		stack.push(1);
-		stack.push(2);
-		stack.push(3);
-		stack.push(4);
-		stack.push(5);
-		Integer i = null;
-		while((i = stack.pop()) != null) {
-			System.out.println(i+" , size="+stack.size());
-		}
-	}
 }

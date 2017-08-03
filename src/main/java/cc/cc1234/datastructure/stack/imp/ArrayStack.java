@@ -1,7 +1,9 @@
-package cc.cc1234.datastructure.stack;
+package cc.cc1234.datastructure.stack.imp;
 
 import java.util.Arrays;
 import java.util.Queue;
+
+import cc.cc1234.datastructure.stack.IStack;
 
 /**
  * 
@@ -55,24 +57,5 @@ public class ArrayStack<E> implements IStack<E>{
 	@Override
 	public String toString() {
 		return "Stack [data=" + Arrays.toString(data) + ", size=" + size + "]";
-	}
-
-	public static void main(String[] args) {
-		ArrayStack<Integer> stack = new ArrayStack<>(10);
-		stack.push(1);
-		stack.push(2);
-		stack.push(3);
-		stack.push(4);
-		stack.push(5);
-		stack.push(6);
-		System.out.println(stack);
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack);
 	}
 }

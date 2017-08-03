@@ -49,7 +49,7 @@ public class PriorityQueue<E> {
 		return insertNode(node);
 	}
 	
-	public boolean insertNode(Node<E> node) {
+	private boolean insertNode(Node<E> node) {
 		if(head == null) {
 			head = tail = node;
 			size++;
@@ -99,17 +99,27 @@ public class PriorityQueue<E> {
 		}
 		Node<E> e = head;
 		head = head.next;
+		if(head != null) {
+			head.pre = null;
+		}else {
+			tail = null;
+		}
 		size--;
 		return e.value;
 	}
 	
-	public E tail() {
+	public E removeTail() {
 		if(size == 0) {
 			return null;
 		}
-		Node<E> e =tail;
+		Node<E> e = tail;
 		size--;
 		tail = e.pre;
+		if(tail == null) {
+			head = null;
+		}else {
+			tail.next = null;
+		}
 		return e.value;
 	}
 	

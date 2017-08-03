@@ -73,32 +73,4 @@ public class QuickUnionV2 {
 		return "QuickUnion [id=" + Arrays.toString(id) + ", count=" + count + "]";
 	}
 
-	public static void main(String[] args) {
-		System.out.println("-------------------");
-		QuickUnionV2 v2 = new QuickUnionV2(6);
-		System.out.println(v2);
-		System.out.println(Arrays.toString(v2.level));
-		
-		System.out.println("union(1,2)="+v2.union(1, 2));
-		System.out.println(v2);
-		System.out.println(Arrays.toString(v2.level));
-		
-		System.out.println("union(3,1)="+v2.union(3, 1));
-		System.out.println(v2);
-		System.out.println(Arrays.toString(v2.level));
-		
-		System.out.println("union(4,5)="+v2.union(4, 5));
-		System.out.println(v2);
-		System.out.println(Arrays.toString(v2.level));
-		
-		System.out.println("union(4,2)="+v2.union(4, 2));
-		System.out.println(v2);
-		System.out.println(Arrays.toString(v2.level));
-		
-		System.out.println(v2.isConnected(4, 1));
-		System.out.println(v2.isConnected(3, 1));
-		System.out.println(v2.isConnected(2, 1));
-		System.out.println(v2.isConnected(2, 3));
-	}
-	
 }
