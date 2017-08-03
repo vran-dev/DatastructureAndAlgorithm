@@ -28,7 +28,6 @@ public class BinarySearch<E extends Comparable<? super E>> {
 		
 		int m = (l+r)/2;
 		int c = data[m].compareTo(e);
-		System.out.println("debug:"+m+","+r);
 		if(c == 1) {
 			return binarySearch(e, 0, m-1);
 		}else if(c == -1) {
@@ -39,9 +38,4 @@ public class BinarySearch<E extends Comparable<? super E>> {
 		
 	}
 	
-	public static void main(String[] args) {
-		Integer[] data= {1,2,3,4,5,6,7,9,10};
-		BinarySearch<Integer> search=new BinarySearch<>(data);
-		System.out.println(search.search(8));
-	}
 }
