@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
-
 /**
  * 二分查找测试用例：
  * 要求带查找数据必须是有序的
