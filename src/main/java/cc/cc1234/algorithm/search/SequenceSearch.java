@@ -16,7 +16,7 @@ public class SequenceSearch<E extends Comparable<? super E>> {
 
 	public E search(E e) {
 		for(int i=0 ; i<data.length; i++) {
-			if(data[i].compareTo(e) == 1) {
+			if(data[i].compareTo(e) == 0) {
 				return data[i];
 			}
 		}
