@@ -21,9 +21,4 @@ public class SelectSort<E extends Comparable<? super E>> extends BaseSort<E>{
 			swap(data, i, pos);
 		}
 	}
-	
-	public static void main(String[] args) {
-		SortTest.test(new SelectSort<Integer>());
-	}
-
 }
