@@ -1,5 +1,6 @@
 package cc.cc1234.datastructure.union;
 
+import java.util.Arrays;
 
 /**
  * 并查集
@@ -40,11 +41,16 @@ public class UnionFind {
 			return true;
 		}
 		for(int i=0 ; i<count; i++) {
-			if(find(i) == pID) {
+			if(id[i] == pID) {
 				id[i] = oID;
-				return true;
 			}
 		}
-		return false;
+		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "UnionFind [id=" + Arrays.toString(id) + "]";
+	}
+	
 }
