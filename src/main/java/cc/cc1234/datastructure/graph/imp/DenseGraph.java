@@ -1,5 +1,7 @@
-package cc.cc1234.datastructure.graph;
+package cc.cc1234.datastructure.graph.imp;
 
+import cc.cc1234.datastructure.graph.Graph;
+import cc.cc1234.datastructure.graph.GraphIterator;
 
 /**
  * 稠密图：使用邻接矩阵实现

@@ -1,7 +1,10 @@
-package cc.cc1234.datastructure.graph;
+package cc.cc1234.datastructure.graph.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cc.cc1234.datastructure.graph.Graph;
+import cc.cc1234.datastructure.graph.GraphIterator;
 
 /**
  * 稀疏图
