@@ -116,18 +116,4 @@ public class LinkedQueue<E> implements Dequeue<E>{
 		return "LinkedQueue [head=" + head + ", tail=" + tail + ", size=" + size + "]";
 	}
 
-	public static void main(String[] args) {
-		Dequeue<Integer> q = new LinkedQueue<>();
-		q.add(1);
-		q.add(2);
-		q.addFirst(99);
-		System.out.println(q.tail());
-		System.out.println(q);
-		System.out.println(q.poll());
-		System.out.println(q.poll());
-		System.out.println(q);
-//		q.add(2);
-	}
-
-	
 }
