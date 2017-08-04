@@ -1,5 +1,6 @@
-package cc.cc1234.datastructure.stack;
+package cc.cc1234.datastructure.stack.imp;
 
+import cc.cc1234.datastructure.stack.IStack;
 
 /**
  * 基于链表的栈实现
