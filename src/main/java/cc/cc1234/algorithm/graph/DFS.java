@@ -3,9 +3,9 @@ package cc.cc1234.algorithm.graph;
 import java.util.ArrayList;
 import java.util.List;
 
-import cc.cc1234.datastructure.graph.DenseGraph;
 import cc.cc1234.datastructure.graph.Graph;
 import cc.cc1234.datastructure.graph.GraphIterator;
+import cc.cc1234.datastructure.graph.imp.DenseGraph;
 
 /**
  * 图的深度优先遍历

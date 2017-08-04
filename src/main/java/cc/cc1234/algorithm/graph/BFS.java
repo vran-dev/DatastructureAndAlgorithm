@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import cc.cc1234.datastructure.graph.Graph;
 import cc.cc1234.datastructure.graph.GraphIterator;
-import cc.cc1234.datastructure.graph.SparseGraph;
+import cc.cc1234.datastructure.graph.imp.SparseGraph;
 
 
 /**

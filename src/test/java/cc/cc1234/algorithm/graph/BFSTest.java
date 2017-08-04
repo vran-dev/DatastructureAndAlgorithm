@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import cc.cc1234.datastructure.graph.SparseGraph;
+
+import cc.cc1234.datastructure.graph.imp.SparseGraph;
 
 public class BFSTest {
 	private BFS bfs;
