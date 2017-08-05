@@ -56,7 +56,7 @@ public class DenseGraph implements Graph{
 	
 	private class GraphIteratorImp implements GraphIterator{
 		private int v;
-		private int index = -1;
+		private int index = 0;
 		
 		public GraphIteratorImp(int v) {
 			this.v = v;
@@ -74,9 +74,11 @@ public class DenseGraph implements Graph{
 
 		@Override
 		public int next() {
-			for(index=index+1 ; index < vertexs ;index++) {
+			for(; index < vertexs ;index++) {
 				if(matrix[v][index]) {
-					return index;
+					int r = index;
+					index+=1;
+					return r;
 				}
 			}
 			return -1;
