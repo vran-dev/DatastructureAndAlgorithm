@@ -65,10 +65,12 @@ public class GraphTest {
 		
 		GraphIterator iterator = dense.iterator(0);
 		List<Integer> list = new ArrayList<>();
-		while(!iterator.end()) {
-			list.add(iterator.next());
+		int j;
+		while((j=iterator.next())!=-1) {
+			list.add(j);
 		}
-		System.out.println(list);
+		Integer[] expected = {1,2,5};
+		assertArrayEquals(expected, list.toArray());
 	}
 	
 	/**
@@ -107,5 +109,13 @@ public class GraphTest {
 		assertTrue(!sparse.hasEdge(0, 4));
 		assertTrue(!sparse.hasEdge(7, 8));
 		
+		GraphIterator iterator = sparse.iterator(0);
+		List<Integer> list = new ArrayList<>();
+		int j;
+		while((j=iterator.next())!=-1) {
+			list.add(j);
+		}
+		Integer[] expected = {1,2,5};
+		assertArrayEquals(expected, list.toArray());
 	}
 }
