@@ -21,7 +21,9 @@
 3. [TreeTraversal 二叉树的三种遍历（递归实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 
 ## Graph algorithm
-1. [DFS 图的深度遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
+1. [DFS 图的深度优先遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
+2. [BFS 图的广度优先遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
+3. [LazyPrim 最小生成树算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
 
 
 ## Num algorithm
@@ -52,7 +54,8 @@
 
 ## Heap(堆)
 1. [MaxHeap 最大堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
-2. [PriorityHeap 优先堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
+2. [MinHeap 最小堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
+3. [PriorityHeap 优先堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
 
 ## Tree(树)
 1. [BinaryTree  二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
@@ -62,8 +65,11 @@
 
 
 ## Graph(图)
-1. [DenseGraph  稠密图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph)
-2. [SparseGraph  稀疏图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph)
+1. [DenseGraph  稠密图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph/imp)
+2. [SparseGraph  稀疏图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph/imp)
+3. [DenseWeightGraph  带稠密疏图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph/imp)
+4. [SparseWeightGraph  带权稀疏图](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/graph/imp)
+
 
 ## Union(并查集)
 1. [UnionFind  并查集](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/union)
