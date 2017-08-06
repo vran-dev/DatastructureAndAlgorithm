@@ -2,8 +2,9 @@ package cc.cc1234.datastructure.heap;
 
 import java.util.Comparator;
 
+
 /**
- * 最小索引堆:可以根据索引直接获取值或者根据索引调整值的大小
+ * 最小索引堆
  * @author vran1
  *
  */
