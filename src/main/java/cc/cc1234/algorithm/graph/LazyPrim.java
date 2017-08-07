@@ -29,14 +29,7 @@ public class LazyPrim {
 		this.graph = graph;
 		marked = new boolean[graph.vertexs()];
 		edges = new ArrayList<>(graph.vertexs()-1);
-		minHeap = new MinHeap<>(graph.edges(), new Comparator<Edge>() {
-
-			@Override
-			public int compare(Edge from, Edge to) {
-				return from.getWeight() == to.getWeight() ? 0 : from.getWeight()>to.getWeight()?1:-1;
-			}
-			
-		} );  
+		minHeap = new MinHeap<>(graph.edges(),(f,t)->f.getWeight()==t.getWeight()?0:f.getWeight()>t.getWeight()?1:-1)  ;  
 	}
 	
 	public List<Edge> minumTree(){
@@ -63,24 +56,13 @@ public class LazyPrim {
 		}
 	}
 	
-	/**
-	 * 最小生成树的所有节点
-	 * @return
-	 */
-	public List<Integer> vertexs(){
-		return null;
-	}
 	
 	/**
 	 * 最小生成树的总权值
 	 * @return
 	 */
 	public double weight() {
-		double sum = 0;
-		for(Edge edge:edges) {
-			sum += edge.getWeight();
-		}
-		return sum;
+		return edges.stream().mapToDouble((e)->e.getWeight()).sum();
 	}
 	
 	public static void main(String[] args) {

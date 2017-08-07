@@ -11,9 +11,9 @@ import java.util.Comparator;
 public class MinHeap<E> {
 	private Object[] data;
 	private int size;
-	private Comparator<E> c;
+	private Comparator<? super E> c;
 
-	public MinHeap(int capacity, Comparator<E> c) {
+	public MinHeap(int capacity, Comparator<? super E> c) {
 		data = new Object[capacity];
 		this.c = c;
 	}
