@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 
 /**
- * 最小索引堆
+ * 最小索引堆:可以根据索引直接获取值或者根据索引调整值的大小
  * @author vran1
  *
  */
