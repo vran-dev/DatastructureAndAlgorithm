@@ -1,6 +1,7 @@
-package cc.cc1234.algorithm.graph;
+package cc.cc1234.algorithm.graph.minumTree;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
@@ -17,7 +18,7 @@ import cc.cc1234.util.Log;
  * 最小生成树
  * LazyPrim算法的优化版本
  */
-public class OptimizePrim {
+public class OptimizePrim implements MinumTree{
 	private static final Logger logger = getLogger(OptimizePrim.class, LoggerFactory::getLogger);
 	
 	private IndexMinHeap<Edge> heap;
@@ -31,15 +32,27 @@ public class OptimizePrim {
 		edges = new ArrayList<>();
 		marked = new boolean[graph.vertexs()];
 //		edgeTo = new Edge[graph.vertexs()];
-		heap = new IndexMinHeap<>((from,to)->from.getWeight() == to.getWeight()?0:from.getWeight()>to.getWeight()?1:-1,
-				graph.vertexs());
-		visit(0);
+		heap = new IndexMinHeap<>(Comparator.comparingDouble(Edge::getWeight),graph.vertexs());
 	}
-
+	
+	@Override
 	public double weight() {
 		return  edges.stream().mapToDouble((e)->e.getWeight()).sum();
 	}
-
+	
+	@Override
+	public List<Edge> generate() {
+		edges.clear();
+		visit(0);
+		while(!heap.isEmpty()) {
+			Edge min = heap.popMin();
+			Log.debug(logger, ()->"Min cut edge: "+min);
+			edges.add(min);
+			visit(min.getTo());
+		}
+		return edges;
+	}
+	
 	private void visit(int v) {
 		if(!marked[v]) {
 			marked[v] = true;
@@ -59,43 +72,7 @@ public class OptimizePrim {
 		}
 	}
 
-	public List<Edge> minumTree(){
-		edges.clear();
-		visit(0);
-		while(!heap.isEmpty()) {
-			Edge min = heap.popMin();
-			Log.debug(logger, ()->"Min cut edge: "+min);
-			edges.add(min);
-			visit(min.getTo());
-		}
-		return edges;
-	}
-
 	private static Logger getLogger(Class<?> t,Function<Class<?>, Logger> function) {
 		return function.apply(t);
-	}
-
-	public static void main(String[] args) {
-		SparseWeightGraph graph = new SparseWeightGraph(8);
-		graph.addEdge(0, 2, 0.26);
-		graph.addEdge(0, 4, 0.38);
-		graph.addEdge(0, 6, 0.58);
-		graph.addEdge(0, 7, 0.16);
-		graph.addEdge(1, 2, 0.36);
-		graph.addEdge(1, 3, 0.29);
-		graph.addEdge(1, 5, 0.32);
-		graph.addEdge(1, 7, 0.19);
-		graph.addEdge(2, 3, 0.17);
-		graph.addEdge(2, 6, 0.40);
-		graph.addEdge(2, 7, 0.34);
-		graph.addEdge(3, 6, 0.52);
-		graph.addEdge(4, 5, 0.35);
-		graph.addEdge(4, 6, 0.93);
-		graph.addEdge(4, 7, 0.37);
-		graph.addEdge(5, 7, 0.28);
-		OptimizePrim prim = new OptimizePrim(graph);
-		List<Edge> minumTree = prim.minumTree();
-		System.out.println(minumTree);
-		System.out.println(prim.weight());
 	}
 }

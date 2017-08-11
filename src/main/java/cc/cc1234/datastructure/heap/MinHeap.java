@@ -17,7 +17,22 @@ public class MinHeap<E> {
 		data = new Object[capacity];
 		this.c = c;
 	}
-
+	
+	public MinHeap(E[] data, Comparator<? super E> c) {
+		this.c = c;
+		this.data = data;
+		this.size = data.length;
+		heapify(data);
+	}
+	
+	private void heapify(E[] data) {
+		int k = (size-2)/2;
+		while(k >= 0) {
+			shiftDown(k);
+			k--;
+		}
+	}
+	
 	public void insert(E e) {
 		if(size >= data.length) {
 			throw new IllegalStateException();

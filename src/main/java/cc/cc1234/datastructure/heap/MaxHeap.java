@@ -21,7 +21,8 @@ public class MaxHeap<E extends Comparable<? super E>> {
 	}
 	
 	private void heapify(E[] data) {
-		int p = data.length%2==0?data.length/2-1:data.length/2;
+		int s = data.length-1;
+		int p = (s-1)/2;
 		for( int i = p ; i>=0 ;i--) {
 			shiftDown(i);
 		}
