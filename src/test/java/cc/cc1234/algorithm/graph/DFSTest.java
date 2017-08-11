@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import cc.cc1234.algorithm.graph.traversal.DFS;
 import cc.cc1234.datastructure.graph.imp.DenseGraph;
 
 public class DFSTest {

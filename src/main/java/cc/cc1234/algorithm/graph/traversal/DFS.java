@@ -1,4 +1,4 @@
-package cc.cc1234.algorithm.graph;
+package cc.cc1234.algorithm.graph.traversal;
 
 import java.util.ArrayList;
 import java.util.List;

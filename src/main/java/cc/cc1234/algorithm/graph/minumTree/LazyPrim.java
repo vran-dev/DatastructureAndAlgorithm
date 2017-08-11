@@ -1,14 +1,17 @@
-package cc.cc1234.algorithm.graph;
+package cc.cc1234.algorithm.graph.minumTree;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cc.cc1234.datastructure.graph.imp.Edge;
-import cc.cc1234.datastructure.graph.imp.SparseWeightGraph;
 import cc.cc1234.datastructure.graph.imp.WeightGraph;
 import cc.cc1234.datastructure.graph.imp.WeightGraphIterator;
 import cc.cc1234.datastructure.heap.MinHeap;
+import cc.cc1234.util.Log;
 
 /**
  * 最小生成树算法--LazyPrim:
@@ -16,7 +19,8 @@ import cc.cc1234.datastructure.heap.MinHeap;
  * @author vran1
  *
  */
-public class LazyPrim {
+public class LazyPrim implements MinumTree{
+	private static final Logger logger = LoggerFactory.getLogger(LazyPrim.class);
 	
 	private WeightGraph graph;
 	
@@ -29,10 +33,11 @@ public class LazyPrim {
 		this.graph = graph;
 		marked = new boolean[graph.vertexs()];
 		edges = new ArrayList<>(graph.vertexs()-1);
-		minHeap = new MinHeap<>(graph.edges(),(f,t)->f.getWeight()==t.getWeight()?0:f.getWeight()>t.getWeight()?1:-1)  ;  
+		minHeap = new MinHeap<>(graph.edges(),Comparator.comparingDouble(Edge::getWeight));  
 	}
 	
-	public List<Edge> minumTree(){
+	@Override
+	public List<Edge> generate() {
 		edges.clear();
 		visit(0);
 		while(!minHeap.isEmpty()){
@@ -42,6 +47,7 @@ public class LazyPrim {
 				visit(min.getTo());
 			}
 		}
+		Log.debug(logger, ()->"Generate tree complete: "+edges.toString());
 		return edges;
 	}
 	
@@ -61,31 +67,8 @@ public class LazyPrim {
 	 * 最小生成树的总权值
 	 * @return
 	 */
+	@Override
 	public double weight() {
 		return edges.stream().mapToDouble((e)->e.getWeight()).sum();
-	}
-	
-	public static void main(String[] args) {
-		SparseWeightGraph graph = new SparseWeightGraph(8);
-		graph.addEdge(0, 2, 0.26);
-		graph.addEdge(0, 4, 0.38);
-		graph.addEdge(0, 6, 0.58);
-		graph.addEdge(0, 7, 0.16);
-		graph.addEdge(1, 2, 0.36);
-		graph.addEdge(1, 3, 0.29);
-		graph.addEdge(1, 5, 0.32);
-		graph.addEdge(1, 7, 0.19);
-		graph.addEdge(2, 3, 0.17);
-		graph.addEdge(2, 6, 0.40);
-		graph.addEdge(2, 7, 0.34);
-		graph.addEdge(3, 6, 0.52);
-		graph.addEdge(4, 5, 0.35);
-		graph.addEdge(4, 6, 0.93);
-		graph.addEdge(4, 7, 0.37);
-		graph.addEdge(5, 7, 0.28);
-		LazyPrim lazyPrim = new LazyPrim(graph);
-		List<Edge> minumTree = lazyPrim.minumTree();
-		System.out.println(minumTree);
-		System.out.println(lazyPrim.weight());
 	}
 }

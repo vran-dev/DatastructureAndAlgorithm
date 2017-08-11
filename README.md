@@ -21,10 +21,11 @@
 3. [TreeTraversal 二叉树的三种遍历（递归实现）](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/tree)
 
 ## Graph algorithm
-1. [DFS 图的深度优先遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
-2. [BFS 图的广度优先遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
-3. [LazyPrim 最小生成树算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
-4. [OptimizePrim Prim优化版](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph)
+1. [DFS 图的深度优先遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph/traveral)
+2. [BFS 图的广度优先遍历](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph/traveral)
+3. [LazyPrim 普里姆最小生成树算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph/minumTree)
+4. [OptimizePrim 普里姆算法优化版](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph/minumTree)
+5. [Kruskal 克鲁斯卡尔最小生成树算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph/minumTree)
 
 
 ## Num algorithm
