@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cc.cc1234.datastructure.graph.imp.Edge;
+import cc.cc1234.datastructure.graph.imp.SparseWeightGraph;
 import cc.cc1234.datastructure.graph.imp.WeightGraph;
 import cc.cc1234.datastructure.graph.imp.WeightGraphIterator;
 import cc.cc1234.datastructure.heap.IndexMinHeap;
@@ -16,8 +17,8 @@ import cc.cc1234.util.Log;
 
 /**
  * 单源最短路径算法
- * 限制条件	：处理的图中不能有负权边
- * 时间复杂度	：ElogV
+ * 限制条件	:处理的图中不能有负权边
+ * 时间复杂度	:ElogV
  * 
  * @author vran1
  *
@@ -28,21 +29,24 @@ public class Dijkstra {
 	private IndexMinHeap<Double> heap;
 	private WeightGraph graph;
 	private int start; // 求单源最短路径的起点
-	private Double[] dist;
+	private Double[] dist; // 长度记录
 	private boolean[] marked;
-	private List<Edge> from;
-
+	private List<Integer>[] from;// 路径记录
 	public Dijkstra(WeightGraph graph, int start) {
 		assert start >= 0 && start < graph.vertexs():"Illegal argument start = "+start;
 
 		this.graph = graph;
 		this.start = start;
 		heap = new IndexMinHeap<>(Comparator.comparing(Double::doubleValue), graph.vertexs());
-		from = new LinkedList<>();
+		from = new LinkedList[graph.vertexs()];
 		dist = new Double[graph.vertexs()];
 		marked = new boolean[graph.vertexs()];
-
+		
+		for(int i=0;i<from.length;i++) {
+			from[i] = new LinkedList<Integer>();
+		}
 		Log.info(logger, ()->"init complete: graph.vertexs = "+graph.vertexs());
+		generate(this.start);
 	}
 
 	private void generate(int v) {
@@ -51,18 +55,28 @@ public class Dijkstra {
 		heap.insert(v, 0.0);
 		while(!heap.isEmpty()) {
 			int idx = heap.getMinIndex();
+			heap.popMin();
 			marked[idx] = true;
 			WeightGraphIterator iterator = graph.iterator(idx);
 			while(!iterator.end()) {
-				Edge min = iterator.next();
-				int w = min.other(idx);
+				Edge edge = iterator.next();
+				int w = edge.other(idx);
 				if(!marked[w]) {
-					if(dist[min.getTo()] == null || dist[min.getTo()] < dist[min.getFrom()]+min.getWeight()) {
-						dist[min.getTo()] = dist[min.getFrom()]+min.getWeight();
+					if(dist[edge.getTo()] == null || dist[edge.getTo()] > dist[edge.getFrom()]+edge.getWeight()) {
+						dist[edge.getTo()] = dist[edge.getFrom()]+edge.getWeight();
+						if(heap.get(w)==null) {
+							heap.insert(w, dist[w]);
+							from[w].add(edge.getFrom());
+						}else {
+							heap.change(w, dist[w]);
+							from[w].clear();
+							Log.debug(logger, ()->"from["+edge.getTo()+"].addAll = "+from[edge.getFrom()]);
+							from[w].addAll(from[edge.getFrom()]);
+							from[w].add(edge.getFrom());
+						}
 					}
 				}
 			}
-
 		}
 	}
 
@@ -71,15 +85,15 @@ public class Dijkstra {
 	 * @param to
 	 * @return
 	 */
-	public Double shortestPathLength(int to) {
-		// TODO
-		return null;
+	public Double dist(int to) {
+		return dist[to];
 	}
 
-	public List<Integer> shortestPath(int to){
-		// TODO
-		return null;
+	public List<Integer> path(int to){
+		Log.debug(logger, ()->"Go to "+to+" path: "+from[to]);
+		return from[to];
 	}
+	
 
 	/**
 	 * 是否存在到to节点的路径
@@ -87,12 +101,25 @@ public class Dijkstra {
 	 * @return
 	 */
 	public boolean exists(int to) {
-		// TODO
-		return false;
+		return dist[to] == null;
 	}
 
 	public static void main(String[] args) {
-		//TODO
-
+		WeightGraph graph = new SparseWeightGraph(8);
+		graph.addEdge(0, 1, 0.3);
+		graph.addEdge(0, 2, 0.2);
+		graph.addEdge(0, 3, 0.4);
+		graph.addEdge(1, 4, 0.4);
+		graph.addEdge(2, 1, 0.2);
+		graph.addEdge(2, 3, 0.1);
+		graph.addEdge(2, 4, 0.3);
+		graph.addEdge(3, 4, 0.1);
+		Dijkstra dijkstra = new Dijkstra(graph, 0);
+		System.out.println(dijkstra.dist(3));
+		System.out.println(dijkstra.dist(4));
+		System.out.println(dijkstra.path(1));
+		System.out.println(dijkstra.path(2));
+		System.out.println(dijkstra.path(3));
+		System.out.println(dijkstra.path(4));
 	}
 }	
