@@ -58,18 +58,25 @@ public class BellmanFord {
 	 */
 	private void generate(int source) {
 		Queue<Integer> queue = new LinkedList<>();
+		int[] count = new int[graph.vertexs()];
 		dist[source] = 0.0;
 		queue.add(source);
 		
 		while(!queue.isEmpty()) {
 			Integer poll = queue.poll();
+			count[poll] = ++count[poll];
+			if(count[poll]>=graph.vertexs()) {
+				Log.info(logger, ()->"This graph has negative cycle: break;");
+				hasNegativeCycle = true;
+				break;
+			}
 			WeightGraphIterator itr = graph.iterator(poll);
 			while(!itr.end()) {
 				Edge edge = itr.next();
 				if(dist[edge.getTo()] == null || dist[edge.getTo()] > dist[edge.getFrom()]+edge.getWeight()) {
 					dist[edge.getTo()] = dist[edge.getFrom()] + edge.getWeight();
+					queue.add(edge.getTo());
 				}
-				queue.add(edge.getTo());
 			}
 			Log.info(logger, ()->"graph.iterator("+poll+"), dist[] = "+Arrays.toString(dist));
 		}
@@ -101,7 +108,9 @@ public class BellmanFord {
 		graph.addEdge(2, 3, -2);
 		graph.addEdge(2, 4, 2.0);
 		graph.addEdge(3, 4, 1.0);
+		graph.addEdge(4, 2, -2.0);
 		BellmanFord bf = new BellmanFord(graph, 0);
 		System.out.println(Arrays.toString(bf.dist));
+		System.out.println(bf.hasNegativeCycle);
 	}
 }
