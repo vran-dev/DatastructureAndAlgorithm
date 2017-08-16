@@ -101,7 +101,7 @@ public class Dijkstra {
 	 * @return
 	 */
 	public boolean exists(int to) {
-		return dist[to] == null;
+		return dist[to] != null;
 	}
 
 	public static void main(String[] args) {
