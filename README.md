@@ -28,12 +28,14 @@
 5. [Kruskal 克鲁斯卡尔最小生成树算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/graph/minumTree)
 
 
+
 ## Num algorithm
 1. [TwoSum 判断一个有序数组中是否存在两个数的和等于输入的值](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 2. [JumpFloor 青蛙跳台阶](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 3. [GetLeatNumers 寻找最小的K个数](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 4. [FindNonRepeatNum 查找没有重复的数字](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 5. [NumAdd 不使用四则运算做加法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
+6. [FindMaxSequenceChildSum 寻找最大的连续子序列和](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/num)
 
 ## Str algorithm
 1. [BruteForce BF字符串匹配算法](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/algorithm/str)
