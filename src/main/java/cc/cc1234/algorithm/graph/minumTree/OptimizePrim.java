@@ -17,7 +17,7 @@ import cc.cc1234.util.Log;
  * LazyPrim算法的优化版本
  */
 public class OptimizePrim implements MinumTree{
-	private static final Logger logger = getLogger(OptimizePrim.class, LoggerFactory::getLogger);
+	private static final Log log = Log.getInstance(OptimizePrim.class);
 	
 	private IndexMinHeap<Edge> heap;
 //	private Edge[] edgeTo;
@@ -44,7 +44,7 @@ public class OptimizePrim implements MinumTree{
 		visit(0);
 		while(!heap.isEmpty()) {
 			Edge min = heap.popMin();
-			Log.debug(logger, ()->"Min cut edge: "+min);
+			log.debug(()->"Min cut edge: "+min);
 			edges.add(min);
 			visit(min.getTo());
 		}

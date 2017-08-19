@@ -15,14 +15,13 @@ import cc.cc1234.datastructure.graph.imp.WeightGraphIterator;
 import cc.cc1234.util.Log;
 
 /**
- * 贝尔曼-福特算法:相对于dijkstra算法，bellmanFord可以对有负权边的图进行最短路径的计算
- * 时间复杂度:O(E*V)
- * 		
+ * 贝尔曼-福特算法:相对于dijkstra算法，bellmanFord可以对有负权边的图进行最短路径的计算 时间复杂度:O(E*V)
+ * 
  * @author vran
  *
  */
 public class BellmanFord {
-	private static final Logger logger = LoggerFactory.getLogger(BellmanFord.class);
+	private static final Log log = Log.getInstance(BellmanFord.class);
 
 	private WeightGraph graph;
 	// 源节点
@@ -35,57 +34,56 @@ public class BellmanFord {
 	private boolean hasNegativeCycle;
 
 	public BellmanFord(WeightGraph graph, int source) {
-		assert source>=0:"Invalid argument source = "+source;
-		assert graph!=null:"Invalid argument graph = "+graph;
+		assert source >= 0 : "Invalid argument source = " + source;
+		assert graph != null : "Invalid argument graph = " + graph;
 
 		this.graph = graph;
 		this.source = source;
 		dist = new Double[graph.vertexs()];
 		path = new LinkedList[graph.vertexs()];
-		for(int i = 0; i < path.length; i++) {
+		for (int i = 0; i < path.length; i++) {
 			path[i] = new LinkedList<>();
 		}
-		Log.info(logger, ()->"BellmanFord init complete");
+		log.info(() -> "BellmanFord init complete");
 		generate(source);
-		Log.info(logger, ()->"BellmanFord path calc complete");
+		log.info(() -> "BellmanFord path calc complete");
 	}
 
 	/**
-	 * 没有负权环的版本
-	 * 初始化计算得到最短路径相关信息
+	 * 没有负权环的版本 初始化计算得到最短路径相关信息
 	 */
 	private void generate(int source) {
 		Queue<Integer> queue = new LinkedList<>();
 		int[] count = new int[graph.vertexs()];
 		dist[source] = 0.0;
 		queue.add(source);
-		
-		while(!queue.isEmpty()) {
+
+		while (!queue.isEmpty()) {
 			Integer poll = queue.poll();
 			count[poll] = ++count[poll];
-			if(count[poll]>=graph.vertexs()) {
-				Log.info(logger, ()->"This graph has negative cycle: break;");
+			if (count[poll] >= graph.vertexs()) {
+				log.info(() -> "This graph has negative cycle: break;");
 				hasNegativeCycle = true;
 				break;
 			}
 			WeightGraphIterator itr = graph.iterator(poll);
-			while(!itr.end()) {
+			while (!itr.end()) {
 				Edge edge = itr.next();
-				if(dist[edge.getTo()] == null || dist[edge.getTo()] > dist[edge.getFrom()]+edge.getWeight()) {
+				if (dist[edge.getTo()] == null || dist[edge.getTo()] > dist[edge.getFrom()] + edge.getWeight()) {
 					dist[edge.getTo()] = dist[edge.getFrom()] + edge.getWeight();
 					queue.add(edge.getTo());
 				}
 			}
-			Log.info(logger, ()->"graph.iterator("+poll+"), dist[] = "+Arrays.toString(dist));
+			log.info(() -> "graph.iterator(" + poll + "), dist[] = " + Arrays.toString(dist));
 		}
-		
+
 	}
 
 	public Double dist(int w) {
 		return dist[w];
 	}
 
-	public List<Integer> path(int w){
+	public List<Integer> path(int w) {
 		return path[w];
 	}
 
@@ -96,8 +94,9 @@ public class BellmanFord {
 	public boolean hasNegativeCycle() {
 		return hasNegativeCycle;
 	}
+
 	public static void main(String[] args) {
-		WeightGraph graph = new SparseWeightGraph(5,true);
+		WeightGraph graph = new SparseWeightGraph(5, true);
 		graph.addEdge(0, 1, 2.0);
 		graph.addEdge(0, 2, 4.0);
 		graph.addEdge(0, 3, 3.0);

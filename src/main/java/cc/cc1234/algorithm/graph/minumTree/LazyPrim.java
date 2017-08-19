@@ -20,7 +20,7 @@ import cc.cc1234.util.Log;
  *
  */
 public class LazyPrim implements MinumTree{
-	private static final Logger logger = LoggerFactory.getLogger(LazyPrim.class);
+	private static final Log log = Log.getInstance(LazyPrim.class);
 	
 	private WeightGraph graph;
 	
@@ -47,7 +47,7 @@ public class LazyPrim implements MinumTree{
 				visit(min.getTo());
 			}
 		}
-		Log.debug(logger, ()->"Generate tree complete: "+edges.toString());
+		log.debug(()->"Generate tree complete: "+edges.toString());
 		return edges;
 	}
 	

@@ -16,24 +16,22 @@ import cc.cc1234.datastructure.heap.IndexMinHeap;
 import cc.cc1234.util.Log;
 
 /**
- * 单源最短路径算法
- * 限制条件	:处理的图中不能有负权边
- * 时间复杂度	:ElogV
+ * 单源最短路径算法 限制条件 :处理的图中不能有负权边 时间复杂度 :ElogV
  * 
  * @author vran1
  *
  */
 public class Dijkstra {
-	private static final Logger logger = LoggerFactory.getLogger(Dijkstra.class);
-
+	private static final Log log = Log.getInstance(Dijkstra.class);
 	private IndexMinHeap<Double> heap;
 	private WeightGraph graph;
 	private int start; // 求单源最短路径的起点
 	private Double[] dist; // 长度记录
 	private boolean[] marked;
 	private List<Integer>[] from;// 路径记录
+
 	public Dijkstra(WeightGraph graph, int start) {
-		assert start >= 0 && start < graph.vertexs():"Illegal argument start = "+start;
+		assert start >= 0 && start < graph.vertexs() : "Illegal argument start = " + start;
 
 		this.graph = graph;
 		this.start = start;
@@ -41,11 +39,11 @@ public class Dijkstra {
 		from = new LinkedList[graph.vertexs()];
 		dist = new Double[graph.vertexs()];
 		marked = new boolean[graph.vertexs()];
-		
-		for(int i=0;i<from.length;i++) {
+
+		for (int i = 0; i < from.length; i++) {
 			from[i] = new LinkedList<Integer>();
 		}
-		Log.info(logger, ()->"init complete: graph.vertexs = "+graph.vertexs());
+		log.info(() -> "init complete: graph.vertexs = " + graph.vertexs());
 		generate(this.start);
 	}
 
@@ -53,24 +51,24 @@ public class Dijkstra {
 		marked[v] = true;
 		dist[v] = 0.0;
 		heap.insert(v, 0.0);
-		while(!heap.isEmpty()) {
+		while (!heap.isEmpty()) {
 			int idx = heap.getMinIndex();
 			heap.popMin();
 			marked[idx] = true;
 			WeightGraphIterator iterator = graph.iterator(idx);
-			while(!iterator.end()) {
+			while (!iterator.end()) {
 				Edge edge = iterator.next();
 				int w = edge.other(idx);
-				if(!marked[w]) {
-					if(dist[edge.getTo()] == null || dist[edge.getTo()] > dist[edge.getFrom()]+edge.getWeight()) {
-						dist[edge.getTo()] = dist[edge.getFrom()]+edge.getWeight();
-						if(heap.get(w)==null) {
+				if (!marked[w]) {
+					if (dist[edge.getTo()] == null || dist[edge.getTo()] > dist[edge.getFrom()] + edge.getWeight()) {
+						dist[edge.getTo()] = dist[edge.getFrom()] + edge.getWeight();
+						if (heap.get(w) == null) {
 							heap.insert(w, dist[w]);
 							from[w].add(edge.getFrom());
-						}else {
+						} else {
 							heap.change(w, dist[w]);
 							from[w].clear();
-							Log.debug(logger, ()->"from["+edge.getTo()+"].addAll = "+from[edge.getFrom()]);
+							log.debug(() -> "from[" + edge.getTo() + "].addAll = " + from[edge.getFrom()]);
 							from[w].addAll(from[edge.getFrom()]);
 							from[w].add(edge.getFrom());
 						}
@@ -82,6 +80,7 @@ public class Dijkstra {
 
 	/**
 	 * 从 start --> to 节点的路径长度
+	 * 
 	 * @param to
 	 * @return
 	 */
@@ -89,14 +88,14 @@ public class Dijkstra {
 		return dist[to];
 	}
 
-	public List<Integer> path(int to){
-		Log.debug(logger, ()->"Go to "+to+" path: "+from[to]);
+	public List<Integer> path(int to) {
+		log.debug(() -> "Go to " + to + " path: " + from[to]);
 		return from[to];
 	}
-	
 
 	/**
 	 * 是否存在到to节点的路径
+	 * 
 	 * @param to
 	 * @return
 	 */
@@ -122,4 +121,4 @@ public class Dijkstra {
 		System.out.println(dijkstra.path(3));
 		System.out.println(dijkstra.path(4));
 	}
-}	
+}
