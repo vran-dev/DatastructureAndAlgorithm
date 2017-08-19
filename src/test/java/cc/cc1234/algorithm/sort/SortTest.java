@@ -1,6 +1,5 @@
 package cc.cc1234.algorithm.sort;
 
-import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Before;

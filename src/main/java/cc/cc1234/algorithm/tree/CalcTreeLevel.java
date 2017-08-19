@@ -24,7 +24,6 @@ public class CalcTreeLevel {
 		public TreeNode(E v, TreeNode<E> left) {
 			this.v = v;
 			this.left = left;
-			this.right = right;
 		}
 		
 		public TreeNode(E v) {
@@ -33,7 +32,7 @@ public class CalcTreeLevel {
 		
 	}
 	
-	public static int level(TreeNode root) {
+	public static <E> int level(TreeNode<E> root) {
 		if(root == null) {
 			return -1;
 		}
@@ -43,15 +42,15 @@ public class CalcTreeLevel {
 	/**
 	 * 该方法不仅可以计算树的总的层高，还可以记录每层的元素个数
 	 */
-	private static int calcByQueue(TreeNode root) {
-		Queue<TreeNode> a = new LinkedQueue<>();
-		Queue<TreeNode> b = new LinkedQueue<>();		
+	private static <E> int calcByQueue(TreeNode<E> root) {
+		Queue<TreeNode<E>> a = new LinkedQueue<>();
+		Queue<TreeNode<E>> b = new LinkedQueue<>();		
 		a.add(root);
 		int level = 1;
 		
 		while(!a.isEmpty() || !b.isEmpty() ) {
 			while(!a.isEmpty()) {
-				TreeNode n = a.poll();
+				TreeNode<E> n = a.poll();
 				if(n.left!=null) {
 					b.add(n.left);
 				}
@@ -64,7 +63,7 @@ public class CalcTreeLevel {
 				level++;
 			}
 			while(!b.isEmpty()) {
-				TreeNode n = b.poll();
+				TreeNode<E> n = b.poll();
 				if(n.left!=null) {
 					a.add(n.left);
 				}
@@ -80,7 +79,7 @@ public class CalcTreeLevel {
 		return level;
 	}
 	
-	private static int calcByRecursion(TreeNode node) {
+	private static <E> int calcByRecursion(TreeNode<E> node) {
 		if(node == null) {
 			return 0;
 		}

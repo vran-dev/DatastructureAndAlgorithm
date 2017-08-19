@@ -15,12 +15,6 @@ public class BinaryTree<E extends Comparable<? super E>> extends BaseTree<E> {
 		TreeNode<E> left;
 		TreeNode<E> right;
 
-		public TreeNode(E v, TreeNode<E> left, TreeNode<E> right) {
-			this.v = v;
-			this.left = left;
-			this.right = right;
-		}
-
 		public TreeNode() {
 			super();
 		}

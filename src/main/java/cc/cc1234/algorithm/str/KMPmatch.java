@@ -1,6 +1,5 @@
 package cc.cc1234.algorithm.str;
 
-import java.util.Arrays;
 
 /**
  * KMP模式匹配算法

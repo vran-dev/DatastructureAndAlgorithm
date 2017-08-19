@@ -166,7 +166,7 @@ public class IndexMinHeap<E> {
 
 	public static void main(String[] args) {
 		Integer[] data = {6,1,3,4,2,9};
-		IndexMinHeap<Integer> heap = new IndexMinHeap(new Comparator<Integer>(){
+		IndexMinHeap<Integer> heap = new IndexMinHeap<>(new Comparator<Integer>(){
 			@Override
 			public int compare(Integer o1, Integer o2) {
 				return o1.equals(o2)?0:o1>o2?1:-1;

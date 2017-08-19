@@ -1,9 +1,7 @@
 package cc.cc1234.algorithm.sort.quick;
 
-import java.util.Arrays;
 
 import cc.cc1234.algorithm.sort.BaseSort;
-import cc.cc1234.algorithm.sort.SortTest;
 
 /**
  * 快速排序
