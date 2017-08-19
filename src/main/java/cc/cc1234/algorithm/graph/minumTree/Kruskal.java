@@ -21,8 +21,7 @@ import cc.cc1234.util.Log;
  *
  */
 public class Kruskal implements MinumTree{
-	private static final Logger logger = LoggerFactory.getLogger(MinumTree.class);
-
+	private static final Log log = Log.getInstance(Kruskal.class);
 	private WeightGraph graph;
 	private MinHeap<Edge> heap;
 	private List<Edge> edges;
@@ -32,7 +31,7 @@ public class Kruskal implements MinumTree{
 		heap = new MinHeap<>(16, Comparator.comparingDouble(Edge::getWeight));
 		union = new QuickUnionV3(graph.vertexs());
 		edges = new ArrayList<>();
-		Log.debug(logger, ()->"Init complete edges = "+graph.edges()+", vertexs = "+graph.vertexs());
+		log.debug(()->"Init complete edges = "+graph.edges()+", vertexs = "+graph.vertexs());
 	}
 
 	@Override

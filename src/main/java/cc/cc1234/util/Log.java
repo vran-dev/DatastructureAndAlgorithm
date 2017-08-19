@@ -3,6 +3,7 @@ package cc.cc1234.util;
 import java.util.function.Supplier;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 日志工具类
@@ -11,26 +12,35 @@ import org.slf4j.Logger;
  *
  */
 public class Log {
+	private Logger logger;
 	
-	public static void debug(Logger logger, Supplier<String> supplier) {
+	private Log(Logger logger) {
+		this.logger = logger;
+	}
+	
+	public static Log getInstance(Class<?> clazz) {
+		return new Log(LoggerFactory.getLogger(clazz));
+	}
+	
+	public void debug(Supplier<String> supplier) {
 		if(logger.isDebugEnabled()) {
 			logger.debug(supplier.get());
 		}
 	}
 	
-	public static void info(Logger logger,Supplier<String> supplier) {
+	public void info(Supplier<String> supplier) {
 		if(logger.isInfoEnabled()) {
 			logger.info(supplier.get());
 		}
 	}
 	
-	public static void error(Logger logger, Supplier<String> supplier) {
+	public void error(Supplier<String> supplier) {
 		if(logger.isErrorEnabled()) {
 			logger.error(supplier.get());
 		}
 	}
 	
-	public static void warn(Logger logger, Supplier<String> supplier) {
+	public void warn(Supplier<String> supplier) {
 		if(logger.isWarnEnabled()) {
 			logger.warn(supplier.get());
 		}
