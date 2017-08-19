@@ -2,11 +2,9 @@ package cc.cc1234.algorithm.graph.minumTree;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import cc.cc1234.datastructure.graph.imp.Edge;
 import cc.cc1234.datastructure.graph.imp.SparseWeightGraph;
 import cc.cc1234.datastructure.graph.imp.WeightGraph;
 
@@ -37,21 +35,18 @@ public class MinumTreeTest {
 	@Test
 	public void testPrim() {
 		MinumTree prim = new LazyPrim(graph);
-		List<Edge> edges = prim.generate();
 		assertTrue(prim.weight() == 1.81);
 	}
 	
 	@Test
 	public void testOptPrim() {
 		MinumTree opPrim = new OptimizePrim(graph);
-		List<Edge> edges = opPrim.generate();
 		assertTrue(opPrim.weight() == 1.81);
 	}
 	
 	@Test
 	public void testKruskal() {
 		MinumTree kruskal = new Kruskal(graph);
-		List<Edge> edges = kruskal.generate();
 		assertTrue(kruskal.weight() == 1.81);
 	}
 }

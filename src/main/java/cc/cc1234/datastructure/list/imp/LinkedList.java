@@ -13,8 +13,8 @@ public class LinkedList<E extends Comparable<? super E>> extends BaseList<E> {
 	
 	private static class Node<E>{
 		E value;
-		Node next;
-		Node pre;
+		Node<E> next;
+		Node<E> pre;
 		
 		public Node() {
 			super();
@@ -22,12 +22,6 @@ public class LinkedList<E extends Comparable<? super E>> extends BaseList<E> {
 		
 		public Node(E obj) {
 			this.value = obj;
-		}
-
-		public Node(E obj, Node next, Node pre) {
-			this.value = obj;
-			this.next = next;
-			this.pre = pre;
 		}
 
 		@Override

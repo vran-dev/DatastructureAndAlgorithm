@@ -43,7 +43,7 @@ public class BFSTest {
 
 	@Test
 	public void testHasPath() {
-		List<Integer> list = bfs.order(0);
+		bfs.order(0);
 		assertTrue(bfs.hasPath(0));
 		assertTrue(bfs.hasPath(6));
 		assertTrue(bfs.hasPath(5));
@@ -58,7 +58,7 @@ public class BFSTest {
 
 	@Test
 	public void testLength() {
-		List<Integer> list = bfs.order(0);
+		bfs.order(0);
 		assertTrue(bfs.length(0) == 0);
 		assertTrue(bfs.length(1) == 1);
 		assertTrue(bfs.length(2) == 1);
@@ -70,7 +70,7 @@ public class BFSTest {
 
 	@Test
 	public void testPath() {
-		List<Integer> list = bfs.order(0);
+		bfs.order(0);
 		Integer[] empty = {};
 		assertArrayEquals(empty, bfs.path(0).toArray());
 		

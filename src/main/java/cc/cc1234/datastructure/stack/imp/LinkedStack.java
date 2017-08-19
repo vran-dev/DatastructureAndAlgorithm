@@ -14,18 +14,10 @@ public class LinkedStack<E> implements IStack<E>{
 		E v;
 		Node<E> next;
 		Node<E> pre;
-		public Node(E v, Node<E> next, Node<E> pre) {
-			this.v = v;
-			this.next = next;
-			this.pre = pre;
-		}
-		public Node() {
-			super();
-		}
+		
 		public Node(E v) {
 			this.v = v;
 		}
-		
 	}
 	
 	@Override

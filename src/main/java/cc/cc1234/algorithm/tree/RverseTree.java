@@ -29,12 +29,12 @@ public class RverseTree {
 		
 	}
 
-	public static TreeNode reverse(TreeNode node) {
+	public static <E> TreeNode<E> reverse(TreeNode<E> node) {
 		if(node == null) {
 			return null;
 		}
-		TreeNode lc = node.leftChild;
-		TreeNode rc = node.rightChild;
+		TreeNode<E> lc = node.leftChild;
+		TreeNode<E> rc = node.rightChild;
 		node.leftChild = reverse(rc);
 		node.rightChild = reverse(lc);
 		return node;
@@ -43,7 +43,7 @@ public class RverseTree {
 	public static void main(String[] args) {
 		TreeNode<Integer> node =new TreeNode<>(1,new TreeNode<>(2,new TreeNode<>(4),new TreeNode<>(5)),new TreeNode<>(3));
 		System.out.println(node);
-		TreeNode<Integer> reverse = reverse(node);
+		reverse(node);
 		System.out.println(node);
 	}
 }

@@ -33,7 +33,6 @@ public class BellmanFord {
 	private Double[] dist;
 	// 是否存在负权环
 	private boolean hasNegativeCycle;
-	private boolean[] marked;
 
 	public BellmanFord(WeightGraph graph, int source) {
 		assert source>=0:"Invalid argument source = "+source;
@@ -41,7 +40,6 @@ public class BellmanFord {
 
 		this.graph = graph;
 		this.source = source;
-		marked = new boolean[graph.vertexs()];
 		dist = new Double[graph.vertexs()];
 		path = new LinkedList[graph.vertexs()];
 		for(int i = 0; i < path.length; i++) {

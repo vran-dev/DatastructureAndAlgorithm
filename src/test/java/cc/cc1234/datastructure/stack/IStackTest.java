@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import cc.cc1234.datastructure.queue.imp.LinkedQueue;
 import cc.cc1234.datastructure.stack.imp.ArrayStack;
 import cc.cc1234.datastructure.stack.imp.LinkedStack;
 

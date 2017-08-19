@@ -61,7 +61,7 @@ public class QuickUnionV3 {
 		return true;
 	}
 	
-	private int size(int v) {
+	public int size(int v) {
 		return level[v];
 	}
 	

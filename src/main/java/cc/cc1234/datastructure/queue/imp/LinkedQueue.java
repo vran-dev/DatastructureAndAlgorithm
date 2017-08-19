@@ -24,12 +24,6 @@ public class LinkedQueue<E> implements Dequeue<E>{
 			this.v = v;
 		}
 
-		public Node(E v, Node<E> next, Node<E> pre) {
-			this.v = v;
-			this.next = next;
-			this.pre = pre;
-		}
-
 		@Override
 		public String toString() {
 			return "Node [v=" + v +"]";
