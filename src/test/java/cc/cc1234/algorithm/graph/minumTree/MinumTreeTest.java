@@ -35,18 +35,21 @@ public class MinumTreeTest {
 	@Test
 	public void testPrim() {
 		MinumTree prim = new LazyPrim(graph);
+		prim.generate();
 		assertTrue(prim.weight() == 1.81);
 	}
 	
 	@Test
 	public void testOptPrim() {
 		MinumTree opPrim = new OptimizePrim(graph);
+		opPrim.generate();
 		assertTrue(opPrim.weight() == 1.81);
 	}
 	
 	@Test
 	public void testKruskal() {
 		MinumTree kruskal = new Kruskal(graph);
+		kruskal.generate();
 		assertTrue(kruskal.weight() == 1.81);
 	}
 }
