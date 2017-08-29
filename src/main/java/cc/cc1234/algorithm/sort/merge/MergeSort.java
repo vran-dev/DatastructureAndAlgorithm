@@ -1,7 +1,7 @@
 package cc.cc1234.algorithm.sort.merge;
 
 import cc.cc1234.algorithm.sort.BaseSort;
-import cc.cc1234.algorithm.sort.SortTest;
+
 
 /**
  * 归并排序
