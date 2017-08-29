@@ -61,6 +61,8 @@
 2. [MinHeap 最小堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
 3. [IndexMinHeap 最小索引堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
 4. [PriorityHeap 优先堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
+5. [LeftistHeap 左式堆](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/heap)
+
 
 ## Tree(树)
 1. [BinaryTree  二叉树](https://github.com/vkeeper/Algorithm/tree/master/src/main/java/cc/cc1234/datastructure/tree)
