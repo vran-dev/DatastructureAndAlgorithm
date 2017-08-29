@@ -17,6 +17,10 @@ public class LeftistHeap<E> {
 		Node<E> left;
 		Node<E> right;
 		int npl;
+
+		public Node(E e) {
+			this.e = e;
+		}
 	}
 
 	public LeftistHeap(Comparator<E> cmp) {
@@ -39,38 +43,49 @@ public class LeftistHeap<E> {
 			return h1;
 		}
 		if (cmp.compare(h1.e, h2.e) < 0) {
-			return doMerge(h1,h2);
-		}else {
-			return doMerge(h2,h1);
+			return doMerge(h1, h2);
+		} else {
+			return doMerge(h2, h1);
 		}
 	}
 
 	private Node<E> doMerge(Node<E> h1, Node<E> h2) {
-		if(h1.left == null) {
+		if (h1.left == null) {
 			h1.left = h2;
-		}else {
+		} else {
 			h1.right = merge(h1.right, h2);
-			if(h1.left.npl < h1.right.npl) {
+			if (h1.left.npl < h1.right.npl) {
 				swapChild(h1);
 			}
-			h1.npl = h1.right.npl +1;
+			h1.npl = h1.right.npl + 1;
 		}
 		return h1;
 	}
-	
+
 	private void swapChild(Node<E> node) {
 		Node<E> l = node.left;
 		node.left = node.right;
 		node.right = l;
 	}
-	
+
+	public void insert(E e) {
+		root = merge(new Node(e), root);
+	}
 
 	public E findMin() {
-		return null;
+		if (isEmpty()) {
+			return null;
+		}
+		return root.e;
 	}
 
 	public E deleteMin() {
-		return null;
+		if (isEmpty()) {
+			return null;
+		}
+		E e = root.e;
+		root = merge(root.left, root.right);
+		return e;
 	}
 
 	public void clear() {
